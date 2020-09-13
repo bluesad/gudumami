@@ -1,0 +1,18 @@
+#root{
+	overflow-x: hidden;
+}
+
+.MuiDivider-root{
+	width: 100vw;
+}
+.MuiDrawer-root{
+	.MuiPaper-root{
+		background-color: rgba(46, 46, 46, 0.95);
+		color: #fff;
+		overscroll-behavior: contain;
+	}
+}
+
+.MuiTypography-body1{
+		font-family: '微软雅黑' !important;
+}
