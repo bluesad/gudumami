@@ -8,16 +8,19 @@
     "@testing-library/user-event": "^7.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
   },
   "scripts": {
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "flow": "flow",
     "start": "react-scripts start",
+    "serve": "serve -s build -l 4000",
+    "server": "node server",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,10 +38,34 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
+    "@babel/plugin-proposal-pipeline-operator": "^7.10.5",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "flow-bin": "^0.133.0",
     "graphql": "^15.3.0",
     "graphql.macro": "^1.4.2",
+    "helmet": "^4.1.1",
     "node-sass": "^4.14.1",
     "react-styleguidist": "^11.1.0",
+    "serve": "^11.3.2",
     "source-map-explorer": "^2.5.0"
+  },
+  "proxy": "http://jpfood.gudumami.cn/",
+  "babel": {
+    "plugins": [
+      [
+        "@babel/plugin-proposal-pipeline-operator",
+        {
+          "proposal": "minimal"
+        }
+      ],
+      [
+        "@babel/plugin-proposal-optional-chaining",
+        {
+          "loose": false
+        }
+      ]
+    ]
   }
 }

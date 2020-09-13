@@ -1,15 +1,13 @@
 {
   "version": "0.2.0",
   "configurations": [
-  {
-    "name": "Attach by Process ID",
-    "processId": "${command:PickProcess}",
-    "request": "attach",
-    "skipFiles": [
-      "<node_internals>/**"
-    ],
-    "type": "pwa-node"
-  },
+    {
+      "name": "Attach by Process ID",
+      "processId": "${command:PickProcess}",
+      "request": "attach",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "pwa-node"
+    },
     {
       "name": "Chrome",
       "type": "chrome",
@@ -19,6 +17,19 @@
       "sourceMapPathOverrides": {
         "webpack:///src/*": "${webRoot}/*"
       }
+    },
+    {
+      "name": "Debug CRA Tests",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/react-scripts",
+      "args": ["test", "--runInBand", "--no-cache", "--watchAll=false"],
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": { "CI": "true" },
+      "disableOptimisticBPs": true
     }
   ]
 }
