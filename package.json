@@ -11,6 +11,9 @@
     "react-scripts": "3.4.3"
   },
   "scripts": {
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build",
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -30,5 +33,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "graphql": "^15.3.0",
+    "graphql.macro": "^1.4.2",
+    "node-sass": "^4.14.1",
+    "react-styleguidist": "^11.1.0",
+    "source-map-explorer": "^2.5.0"
   }
 }
