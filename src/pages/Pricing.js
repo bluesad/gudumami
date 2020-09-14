@@ -32,8 +32,13 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Zoom from '@material-ui/core/Zoom';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import { common } from '@material-ui/core/colors';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Paper from '@material-ui/core/Paper';
 
 import './Pricing.scss';
+import FeaturedPost from '../components/FeaturedPost';
+import CardMedia from '@material-ui/core/CardMedia';
+import MainFeaturedPost from '../components/MainFeaturedPost';
 
 function Copyright() {
   return (
@@ -64,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
 		backgroundColor: 'rgba(249,245,160,1)',
 		minHeight: 50,
+    borderBottom: '1px solid #fff'
   },
   toolbarTitle: {
     flexGrow: 1,
@@ -73,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
   },
   heroContent: {
     padding: theme.spacing(8, 0, 6),
+    border: '1px solid red'
   },
   cardHeader: {
     backgroundColor:
@@ -119,6 +126,14 @@ const useStyles = makeStyles((theme) => ({
 		bottom: theme.spacing(2),
 		right: theme.spacing(2),
 	},
+  herobar: {
+    height: 'auto',
+    // height: 685.5,
+    backgroundImage: `url(${require('./1292745016802146078.png')})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+  }
 }));
 
 const tiers = [
@@ -224,6 +239,48 @@ export default function Pricing(props) {
     setOpen(false);
   };
 
+  const toggleDrawer = (open) => (event) => {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setOpen(open);
+  };
+
+  const matchesMobile = useMediaQuery('(max-width:600px)');
+
+  const renderHeadContent = (isMobile) => {
+    let comps = [
+      <FeaturedPost
+        key={"intro"}
+        post={{
+          title: "线上料理教室",
+          subTitle: "活动介绍",
+          description: `<p>繁忙都市生活中忙碌的你，是否还在为每日的三餐烦恼？快速、方便、美味的日本速食方便米饭了解一下~</p>
+            <p>9月，在日本农林水产省的支援下，（一般社团法人）全日本稻米及相关食品出口促进协议会相邀2位美食博主及4位沪上大厨联手为你带来6场线上料理直播！</p>
+            <p>直播现场，在线教你在家就可完成的使用日本富山县产方便米饭制作的快速美味料理！从简单的饭团类料理到精巧的米饭甜品，满足不同料理水平的美食料理爱好者。事先报名入群，直播期间群内回答线上问卷即可有机会获得直播同款料理食材大礼包！ 直播间还将为大家带来足量特惠福利！</p>
+            <p>此次活动还邀请日籍大厨开发了6款简单快速操作的料理菜谱！同时还开放平台给热爱料理的你，让你的菜谱有机会与大厨菜谱同台展现！</p>`,
+          image: `${require("./1296776134084892302.png")}`,
+          imageText: "Image Text",
+          subImage: `${require("./1292748164388222750.png")}`,
+          ctaText: `美味的日本方便米饭采购请点击下方购物车`,
+        }}
+      />,
+      <Grid item xs={12} md={6}>
+        <MainFeaturedPost
+          post={{
+            title: "Title of a longer featured blog post",
+            description:
+              "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
+            image: "https://source.unsplash.com/random",
+            imgText: "main image description",
+            linkText: "Continue reading…",
+          }}
+        />
+      </Grid>,
+    ];
+    return isMobile ? comps.reverse() : comps;
+  }
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -254,19 +311,39 @@ export default function Pricing(props) {
           <Button href="#" color="primary" variant="outlined" className={classes.link}>
             Login
           </Button> */}
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="end"
-            onClick={handleDrawerOpen}
-            className={clsx(open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
+          {matchesMobile && (
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="end"
+              onClick={handleDrawerOpen}
+              className={clsx(open && classes.hide)}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
         </Toolbar>
       </AppBar>
       {/* Hero unit */}
-      <Container maxWidth="sm" component="main" className={classes.heroContent}>
+      <Grid container spacing={3}>
+        <Grid item xs={12} className={classes.herobar}>
+          {
+            <img
+              style={{ display: "none" }}
+              src={`${require("./1292745016802146078.png")}`}
+              alt={""}
+            />
+          }
+          <Container maxWidth="lg">
+            <main>
+              <Grid container spacing={4}>
+                {renderHeadContent(matchesMobile)}
+              </Grid>
+            </main>
+          </Container>
+        </Grid>
+      </Grid>
+      <Container maxWidth="lg" component="main" className={classes.heroContent}>
         <Typography
           component="h1"
           variant="h2"
@@ -349,28 +426,30 @@ export default function Pricing(props) {
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>
-			<SwipeableDrawer
+      <SwipeableDrawer
         className={classes.drawer}
         variant="persistent"
         anchor="right"
         open={open}
+        onClose={toggleDrawer(false)}
+        onOpen={toggleDrawer(true)}
         classes={{
           paper: classes.drawerPaper,
         }}
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            <CloseIcon style={{ fontSize: 30, color: common['white'] }}/>
+            <CloseIcon style={{ fontSize: 30, color: common["white"] }} />
           </IconButton>
         </div>
         <Divider />
         <List>
           {["首页", "米饭创意菜谱", "在线购买"].map((text, index) => (
-            <ListItem button key={text} style={{textAlign: "center"}}>
+            <ListItem button key={text} style={{ textAlign: "center" }}>
               {/* <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon> */}
-              <ListItemText primary={text} alignItems="center"/>
+              <ListItemText primary={text} alignitems="center" />
             </ListItem>
           ))}
         </List>
