@@ -8,6 +8,9 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import Button from '@material-ui/core/Button';
+
 
 const useStyles = makeStyles({
   card: {
@@ -40,6 +43,9 @@ const useStyles = makeStyles({
     color: 'rgb(121, 121, 121)',
     fontWeight: 700,
 		textAlign: 'center'
+	},
+	button: {
+		margin: '0 auto'
 	}
 });
 
@@ -52,46 +58,61 @@ export default function FeaturedPost(props) {
       {/* <CardActionArea component="a" href="#"> */}
       {/* <Card className={classes.card}> */}
       <div className={classes.cardDetails}>
-				{/* <Hidden xsDown> */}
-					<CardMedia
-						className={classes.cardMedia}
-						image={post.image}
-						title={post.imageTitle}
-					/>
-				{/* </Hidden> */}
+        {/* <Hidden xsDown> */}
+        <CardMedia
+          className={classes.cardMedia}
+          image={post.image}
+          title={post.imageTitle}
+        />
+        {/* </Hidden> */}
         <CardContent>
           <Typography component="h2" variant="h5" className={classes.title}>
             {post.title}
           </Typography>
-          <Typography variant="subtitle1" color="textSecondary" className={classes.subTitle}>
+          <Typography
+            variant="subtitle1"
+            color="textSecondary"
+            className={classes.subTitle}
+          >
             <CardMedia
-							image={post.subImage}
-							title={post.subTitle}
-							style={{
-								width: '35px',
-								height: '32px',
-								marginRight: '20px'
-							}}
-						/>
-						{post.subTitle}
+              image={post.subImage}
+              title={post.subTitle}
+              style={{
+                width: "35px",
+                height: "32px",
+                marginRight: "20px",
+              }}
+            />
+            {post.subTitle}
           </Typography>
           <Typography variant="subtitle1" paragraph>
             <div
               dangerouslySetInnerHTML={{
                 __html: post.description,
               }}
-							style={{
-								textIndent: '30px',
-								fontFamily: '微软雅黑',
-    						fontSize: '15px',
-    						color: 'rgb(121, 121, 121)',
-    						fontWeight: 400,
-							}}
+              style={{
+                textIndent: "30px",
+                fontFamily: "微软雅黑",
+                fontSize: "15px",
+                color: "rgb(121, 121, 121)",
+                fontWeight: 400,
+              }}
             ></div>
           </Typography>
           <Typography variant="subtitle1" className={classes.ctaText}>
             ​{post.ctaText}
           </Typography>
+					<div style={{textAlign: 'center'}}>
+						<Button
+							variant="contained"
+							color="secondary"
+							size="large"
+							className={classes.button}
+							startIcon={<AddShoppingCartIcon />}
+						>
+							在线购买
+						</Button>
+					</div>
         </CardContent>
       </div>
       {/* </Card> */}

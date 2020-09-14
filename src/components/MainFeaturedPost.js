@@ -16,6 +16,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+		borderRadius: 15,
+		width: 559,
+		height: 323,
+		[theme.breakpoints.down('sm')]: {
+      width: 'calc(294/320 * 100vw)',
+    	height: 'calc(100vw / (294/176))',
+			marginTop: 30,
+    },
   },
   overlay: {
     position: 'absolute',
@@ -23,14 +31,26 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     right: 0,
     left: 0,
-    backgroundColor: 'rgba(0,0,0,.3)',
+    // backgroundColor: 'rgba(0,0,0,.3)',
   },
   mainFeaturedPostContent: {
-    position: 'relative',
+    position: 'absolute',
     padding: theme.spacing(3),
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(6),
       paddingRight: 0,
+    },
+		width: 223,
+    height: 273,
+    bottom: '-4vh',
+    left: '20vw',
+		transform: 'scale(0.5)',
+		[theme.breakpoints.down('sm')]: {
+      width: 114,
+    	height: 139,
+			transform: 'scale(0.25)',
+			left: '54vw',
+			bottom: '2vh',
     },
   },
 }));
@@ -47,7 +67,8 @@ export default function MainFeaturedPost(props) {
       <Grid container>
         <Grid item md={6}>
           <div className={classes.mainFeaturedPostContent}>
-            <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+						<img src={post.subImage} alt="" />
+            {/* <Typography component="h1" variant="h3" color="inherit" gutterBottom>
               {post.title}
             </Typography>
             <Typography variant="h5" color="inherit" paragraph>
@@ -55,7 +76,7 @@ export default function MainFeaturedPost(props) {
             </Typography>
             <Link variant="subtitle1" href="#">
               {post.linkText}
-            </Link>
+            </Link> */}
           </div>
         </Grid>
       </Grid>

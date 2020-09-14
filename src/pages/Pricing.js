@@ -37,8 +37,11 @@ import Paper from '@material-ui/core/Paper';
 
 import './Pricing.scss';
 import FeaturedPost from '../components/FeaturedPost';
+import AppDownload, {ColorButton} from '../components/AppDownload';
 import CardMedia from '@material-ui/core/CardMedia';
 import MainFeaturedPost from '../components/MainFeaturedPost';
+import Footer from '../components/Footer';
+import { deepOrange } from '@material-ui/core/colors';
 
 function Copyright() {
   return (
@@ -79,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
   },
   heroContent: {
     padding: theme.spacing(8, 0, 6),
-    border: '1px solid red'
+    // border: '1px solid red'
   },
   cardHeader: {
     backgroundColor:
@@ -133,19 +136,42 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+  },
+  rightBanner: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  receipeMedia: {
+    width: 278,
+    height: 207,
+    borderRadius: 20,
+    margin: '0 auto'
+  },
+  buttonHead: {
+    color: '#fff',
+    backgroundColor: 'rgb(255, 69, 0)',
+    borderRadius: 40,
+    width: 300,
+    height: 44,
+    lineHeight: '44px',
+    margin: '0 auto'
+    // lineHeight: 44,
   }
 }));
 
 const tiers = [
   {
-    title: 'Free',
+    title: '牛时雨口袋饭团',
     price: '0',
     description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
     buttonText: 'Sign up for free',
     buttonVariant: 'outlined',
+    link: 'http://jpfood.gudumami.cn/video/157375_27865_member_1_57315',
+    image: `${require('./1292820822964544955.jpg')}`
   },
   {
-    title: 'Pro',
+    title: '中华风味牡丹饼',
     subheader: 'Most popular',
     price: '15',
     description: [
@@ -156,9 +182,11 @@ const tiers = [
     ],
     buttonText: 'Get started',
     buttonVariant: 'contained',
+    link: 'http://jpfood.gudumami.cn/video/157375_27861_member_1_57315',
+    image: `${require('./1292820822800967099.jpg')}`
   },
   {
-    title: 'Enterprise',
+    title: '梅子鱼干饭团',
     price: '30',
     description: [
       '50 users included',
@@ -168,6 +196,47 @@ const tiers = [
     ],
     buttonText: 'Contact us',
     buttonVariant: 'outlined',
+    link: 'http://jpfood.gudumami.cn/video/157375_27863_member_1_57315',
+    image: `${require('./1292820825908946363.jpg')}`
+  },
+
+  {
+    title: '东坡肉蒸饭',
+    price: '0',
+    description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
+    buttonText: 'Sign up for free',
+    buttonVariant: 'outlined',
+    link: 'http://jpfood.gudumami.cn/video/157375_27869_member_1_57315',
+    image: `${require('./1292820826470983099.jpg')}`
+  },
+  {
+    title: '上海蟹汤杂炊',
+    subheader: 'Most popular',
+    price: '15',
+    description: [
+      '20 users included',
+      '10 GB of storage',
+      'Help center access',
+      'Priority email support',
+    ],
+    buttonText: 'Get started',
+    buttonVariant: 'contained',
+    link: 'http://jpfood.gudumami.cn/video/157375_27871_member_1_57315',
+    image: `${require('./1292820825107834299.jpg')}`
+  },
+  {
+    title: '鳗鱼卷',
+    price: '30',
+    description: [
+      '50 users included',
+      '30 GB of storage',
+      'Help center access',
+      'Phone & email support',
+    ],
+    buttonText: 'Contact us',
+    buttonVariant: 'outlined',
+    link: 'http://jpfood.gudumami.cn/video/157375_27867_member_1_57315',
+    image: `${require('./1298141363507225383.jpg')}`
   },
 ];
 const footers = [
@@ -228,6 +297,26 @@ ScrollTop.propTypes = {
   window: PropTypes.func,
 };
 
+const featuredPosts = [
+  {
+    title: '成都荣町食品有限公司',
+    date: 'Nov 12',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    image: `${require('./1292817804122629563.png')}`,
+    link: 'https://item.taobao.com/item.htm?spm=a1z10.1-c-s.w4004-21142807355.10.2afd5a25hI5kuP&id=596611922031',
+  },
+  {
+    title: '成都荣町食品有限公司',
+    date: 'Nov 11',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    image: `${require('./1296393346437538599.png')}`,
+    link: 'https://weidian.com/item.html?itemID=1942277080&wfr=wxp_wxh5&ifr=itemdetail&spider_token=fe4a&share_relation=eb648a4fb2b49595_1209426052_3&state=H5WXshareOld&distributorId=1209426052&from=singlemessage&isappinstalled=0',
+  },
+];
+
+
 export default function Pricing(props) {
   const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
@@ -265,13 +354,14 @@ export default function Pricing(props) {
           ctaText: `美味的日本方便米饭采购请点击下方购物车`,
         }}
       />,
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} md={6} className={classes.rightBanner}>
         <MainFeaturedPost
           post={{
             title: "Title of a longer featured blog post",
             description:
               "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-            image: "https://source.unsplash.com/random",
+            image: `${require("./1292751312207193531.png")}`,
+            "subImage": `${require("./1292753712257038110.png")}`,
             imgText: "main image description",
             linkText: "Continue reading…",
           }}
@@ -345,13 +435,23 @@ export default function Pricing(props) {
       </Grid>
       <Container maxWidth="lg" component="main" className={classes.heroContent}>
         <Typography
+          component="p"
+          variant="h5"
+          align="center"
+          color="deepOrange"
+          className={classes.buttonHead}
+          gutterBottom
+        >
+          富山县产越光方便米饭
+        </Typography>
+        <Typography
           component="h1"
-          variant="h2"
+          variant="h3"
           align="center"
           color="textPrimary"
           gutterBottom
         >
-          Pricing
+          米饭创意菜谱
         </Typography>
         <Typography
           variant="h5"
@@ -359,13 +459,11 @@ export default function Pricing(props) {
           color="textSecondary"
           component="p"
         >
-          Quickly build an effective pricing table for your potential customers
-          with this layout. It&apos;s built with default Material-UI components
-          with little customization.
+          米饭创意菜谱等你来创造哦~
         </Typography>
       </Container>
       {/* End hero unit */}
-      <Container maxWidth="md" component="main">
+      <Container maxWidth="lg" component="main">
         <Grid container spacing={5} alignItems="flex-end">
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
@@ -376,25 +474,30 @@ export default function Pricing(props) {
               sm={tier.title === "Enterprise" ? 12 : 6}
               md={4}
             >
-              <Card>
-                <CardHeader
-                  title={tier.title}
-                  subheader={tier.subheader}
+              <div>
+                {/* <CardHeader
+                  // title={tier.title}
+                  // subheader={tier.subheader}
                   titleTypographyProps={{ align: "center" }}
                   subheaderTypographyProps={{ align: "center" }}
                   action={tier.title === "Pro" ? <StarIcon /> : null}
                   className={classes.cardHeader}
-                />
+                /> */}
                 <CardContent>
-                  <div className={classes.cardPricing}>
+                  <CardMedia
+                    className={classes.receipeMedia}
+                    image={tier.image}
+                    title=""
+                  />
+                  {/* <div className={classes.cardPricing}>
                     <Typography component="h2" variant="h3" color="textPrimary">
                       ${tier.price}
                     </Typography>
                     <Typography variant="h6" color="textSecondary">
                       /mo
                     </Typography>
-                  </div>
-                  <ul>
+                  </div> */}
+                  {/* <ul>
                     {tier.description.map((line) => (
                       <Typography
                         component="li"
@@ -405,18 +508,18 @@ export default function Pricing(props) {
                         {line}
                       </Typography>
                     ))}
-                  </ul>
+                  </ul> */}
                 </CardContent>
-                <CardActions>
-                  <Button
+                <CardActions style={{margin: '0 auto', textAlign: 'center', justifyContent: 'center'}}> 
+                  <a href={tier.link}><ColorButton
                     fullWidth
-                    variant={tier.buttonVariant}
+                    // variant={tier.buttonVariant}
                     color="primary"
                   >
-                    {tier.buttonText}
-                  </Button>
+                    {tier.title} >>
+                  </ColorButton></a>
                 </CardActions>
-              </Card>
+              </div>
             </Grid>
           ))}
         </Grid>
@@ -474,10 +577,24 @@ export default function Pricing(props) {
             </Grid>
           ))}
         </Grid>
-        <Box mt={5}>
+        {/* <Box mt={5}>
           <Copyright />
-        </Box>
+        </Box> */}
+        <Grid container spacing={4}>
+          {featuredPosts.map((post) => (
+            <AppDownload key={post.title} post={post} />
+          ))}
+        </Grid>
       </Container>
+      <Container
+        maxWidth="lg"
+        component="app"
+        className={classes.heroContent}
+      ></Container>
+      <Footer
+        title="Footer"
+        description="​主办方：（一般社团法人）全日本稻米及相关食品出口促进协议会"
+      />
       {/* End footer */}
     </React.Fragment>
   );
