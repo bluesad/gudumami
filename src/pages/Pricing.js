@@ -433,6 +433,7 @@ export default function Pricing(props) {
           </Container>
         </Grid>
       </Grid>
+      <div style={{padding: '40px 0', backgroundImage: `url(${require('./1296343136998974247.png')})`, backgroundRepeat: 'no-repeat', backgroundPosition: '0 30px'}}>
       <Container maxWidth="lg" component="main" className={classes.heroContent}>
         <Typography
           component="p"
@@ -510,20 +511,48 @@ export default function Pricing(props) {
                     ))}
                   </ul> */}
                 </CardContent>
-                <CardActions style={{margin: '0 auto', textAlign: 'center', justifyContent: 'center'}}> 
-                  <a href={tier.link}><ColorButton
-                    fullWidth
-                    // variant={tier.buttonVariant}
-                    color="primary"
-                  >
-                    {tier.title} >>
-                  </ColorButton></a>
+                <CardActions
+                  style={{
+                    margin: "0 auto",
+                    textAlign: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <a href={tier.link}>
+                    <ColorButton
+                      fullWidth
+                      // variant={tier.buttonVariant}
+                      color="primary"
+                    >
+                      {tier.title} >>
+                    </ColorButton>
+                  </a>
                 </CardActions>
               </div>
             </Grid>
           ))}
         </Grid>
+        <Box container spacing={5} alignItems="center" style={{textAlign: 'center', marginTop: 20}}>
+          <Typography
+            variant="h5"
+            align="center"
+            color="textSecondary"
+            component="p"
+          >
+            更多创意菜谱&创意菜谱提交
+          </Typography>
+          <ColorButton
+            fullWidth
+            size="large"
+            style={{transform: 'scale(1.2)', marginTop: 10}}
+            variant="contained"
+            color="primary"
+          >
+            点击进入 >>
+          </ColorButton>
+        </Box>
       </Container>
+      </div>
       <ScrollTop {...props}>
         <Fab color="secondary" size="small" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />
