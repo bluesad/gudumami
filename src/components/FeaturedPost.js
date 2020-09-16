@@ -11,6 +11,7 @@ import Hidden from '@material-ui/core/Hidden';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Button from '@material-ui/core/Button';
 import {ColorButton} from './AppDownload';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles({
   card: {
@@ -52,6 +53,7 @@ const useStyles = makeStyles({
 export default function FeaturedPost(props) {
   const classes = useStyles();
   const { post } = props;
+  const matchesMobile = useMediaQuery('(max-width:600px)');
 
   return (
     <Grid item xs={12} md={6}>
@@ -103,7 +105,7 @@ export default function FeaturedPost(props) {
             ​{post.ctaText}
           </Typography>
 					<div style={{textAlign: 'center'}}>
-            <a href='./zxgm.html'>
+            <a href={matchesMobile ? 'm_zxgm.html' : './zxgm.html'}>
               <ColorButton
                 variant="contained"
                 color="secondary"

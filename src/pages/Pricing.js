@@ -41,7 +41,7 @@ import AppDownload, {ColorButton} from '../components/AppDownload';
 import CardMedia from '@material-ui/core/CardMedia';
 import MainFeaturedPost from '../components/MainFeaturedPost';
 import Footer from '../components/Footer';
-import { green } from '@material-ui/core/colors';
+import { green, grey } from '@material-ui/core/colors';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 const tiers = [
@@ -159,7 +159,7 @@ const featuredPosts = [
     link: 'https://weidian.com/item.html?itemID=1942277080&wfr=wxp_wxh5&ifr=itemdetail&spider_token=fe4a&share_relation=eb648a4fb2b49595_1209426052_3&state=H5WXshareOld&distributorId=1209426052&from=singlemessage&isappinstalled=0',
   },
 ];
-const videoPlayer = `<iframe src="//player.bilibili.com/player.html?aid=40243276&bvid=BV1ht411s7H2&cid=70679545&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" load="lazy"> </iframe>`;
+const videoPlayer = `<iframe src="//player.bilibili.com/player.html?aid=884604997&bvid=BV1rK4y1a7gv&cid=235894505&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" load="lazy"> </iframe>`;
 
 export function ScrollTop(props) {
   const { children, window } = props;
@@ -220,6 +220,18 @@ export const RoundGreenButton = withStyles((theme) => ({
     backgroundColor: green[500],
     '&:hover': {
       backgroundColor: green[700],
+    },
+  },
+}))(Button);
+
+export const DisabledButton = withStyles((theme) => ({
+  root: {
+    color: theme.palette.getContrastText(grey[700]),
+		borderRadius: 40,
+		width: 170,
+    backgroundColor: grey[500],
+    '&:hover': {
+      backgroundColor: grey[700],
     },
   },
 }))(Button);
@@ -367,6 +379,80 @@ const useStyles = makeStyles((theme) => ({
       width: 147,
       height: 111,
     },
+  },
+  qrTitle: {
+    fontSize: 18,
+    fontFamily: '微软雅黑',
+    color: 'rgb(0, 134, 24)',
+    fontWeight: 700,
+  },
+  qrMedia: {
+    width: 120,
+    height: 120,
+  },
+  receipeMenu: {
+    position: 'relative',
+    bottom: 40,
+    fontFamily: '微软雅黑',
+    fontSize: 16,
+    color: 'rgb(124, 75, 0)',
+    fontWeight: 400,
+    width: 170,
+    height: 28,
+    backgroundImage: `url(${require('./label.png')})`,
+    backgroundSize: 'cover',
+    textAlign: 'center',
+  },
+  chefMedia: {
+    width: 225,
+    height: 304,
+    backgroundSize: 'contain',
+    [theme.breakpoints.down('sm')]: {
+      width: 160,
+      height: 207,
+    },
+  },
+  profile: {
+    fontFmily: '微软雅黑',
+    fontSize: 20,
+    color: 'rgb(7, 145, 58)',
+    fontWeight: 700,
+    writingMode: 'vertical-lr',
+    position: 'relative',
+    top: -260,
+    left: 30,
+    backgroundImage: `url(${require('./bowl.png')})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'bottom',
+    backgroundSize: 'contain',
+    paddingBottom: 40,
+    [theme.breakpoints.down('sm')]: {
+      top: -190,
+      left: 15,
+    },
+  },
+  subProfile: {
+    fontFmily: '微软雅黑',
+    fontSize: 13,
+    color: 'rgb(7, 145, 58)',
+    fontWeight: 700,
+    writingMode: 'vertical-lr',
+    position: 'relative',
+    top: -330,
+    [theme.breakpoints.down('sm')]: {
+      top: -280,
+    },
+  },
+  gridLine: {
+    height: 300,
+    [theme.breakpoints.down('sm')]: {
+      height: 400,
+    },
+  },
+  gridCell: {
+    [theme.breakpoints.down('sm')]: {
+      height: 200,
+    },
   }
 }));
 
@@ -489,13 +575,14 @@ export default function Pricing(props) {
         </Grid>
       </Grid>
 
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" style={{ overflow: "hidden" }}>
         <Typography
           style={{
             fontFamily: "微软雅黑",
             fontSize: 43,
             color: "rgb(7, 145, 58)",
             fontWeight: 700,
+            margin: '30px 0',
           }}
           variant="h5"
           align="center"
@@ -506,40 +593,265 @@ export default function Pricing(props) {
         </Typography>
 
         <Grid container spacing={3}>
-          <Grid item xs={12}>
+          <Grid item xs={12} className={classes.gridLine} style={{marginBottom:  matchesMobile ? 80 : 0,}}>
             <Grid container spacing={1}>
-              <Grid item xs={6} sm={3}>
+              <Grid item xs={6} sm={3} className={classes.gridCell}>
                 <CardMedia
-                  className={classes.liveMedia}
-                  image={`${require("./1292787404612543931.png")}`}
+                  className={classes.chefMedia}
+                  image={`${require("./1292780357699478971.png")}`}
                   title=""
                 />
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.profile}
+                  color="textSecondary"
+                  component="p"
+                >
+                  为美味而生
+                </Typography>
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.subProfile}
+                  color="textSecondary"
+                  component="p"
+                >
+                  淘宝美食主播
+                </Typography>
               </Grid>
-              <Grid item xs={6} sm={3}>
-                <CardMedia
-                  className={classes.liveMedia}
-                  image={`${require("./csf.jpg")}`}
-                  title=""
-                />
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <CardMedia
-                  className={classes.liveMedia}
-                  image={`${require("./zsmlj.jpg")}`}
-                  title=""
-                />
-              </Grid>
-              <Grid item xs={6} sm={3} style={{
-                    backgroundImage: `url(${require('./qr-title.png')})`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'center 0',
-                    textAalign: "center",
-                }}>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                align="center"
+                style={{ order: matchesMobile ? 1 : "initial" }}
+              >
                 <Grid container direction="column">
                   <Grid item>
                     <Typography
                       variant="h5"
                       align="center"
+                      className={classes.qrTitle}
+                      color="textSecondary"
+                      component="p"
+                    >
+                      ​9月12日
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      className={classes.qrTitle}
+                      color="textSecondary"
+                      component="p"
+                    >
+                      ​20点-21点
+                    </Typography>
+                  </Grid>
+                  <Grid item align="center">
+                    <CardMedia
+                      className={classes.qrMedia}
+                      image={`${require("./1304258451296679006.jpeg")}`}
+                      title=""
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      className={classes.qrTitle}
+                      color="textSecondary"
+                      component="p"
+                    >
+                      扫描二维码报名进群
+                    </Typography>
+                  </Grid>
+                  <Grid item align="center">
+                    <DisabledButton
+                      variant="contained"
+                      size="small"
+                      color="primary"
+                      className={classes.greenRoundButton}
+                    >
+                      观看视频
+                    </DisabledButton>
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                style={{ order: matchesMobile ? 3 : "initial" }}
+              >
+                <CardMedia
+                  className={classes.chefMedia}
+                  style={{backgroundPositionX: 20}}
+                  image={`${require("./1299183976695311175.png")}`}
+                  title=""
+                />
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.profile}
+                  color="textSecondary"
+                  component="p"
+                >
+                  大宝哎美丽
+                </Typography>
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.subProfile}
+                  color="textSecondary"
+                  component="p"
+                >
+                  抖音美食博主
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                style={{
+                  backgroundImage: `url(${require("./qr-title.png")})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center 0",
+                  textAalign: "center",
+                  order: matchesMobile ? 3 : "initial",
+                }}
+              >
+                <Grid container direction="column">
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      className={classes.qrTitle}
+                      color="textSecondary"
+                      component="p"
+                    >
+                      ​9月18日
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      className={classes.qrTitle}
+                      color="textSecondary"
+                      component="p"
+                    >
+                      ​20点-21点
+                    </Typography>
+                  </Grid>
+                  <Grid item align="center">
+                    <CardMedia
+                      className={classes.qrMedia}
+                      image={`${require("./1304258555579659358.jpeg")}`}
+                      title=""
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      className={classes.qrTitle}
+                      color="textSecondary"
+                      component="p"
+                    >
+                      扫描二维码报名进群
+                    </Typography>
+                  </Grid>
+                  <Grid item align="center">
+                    <DisabledButton
+                      variant="contained"
+                      size="small"
+                      color="primary"
+                      className={classes.greenRoundButton}
+                    >
+                      观看视频
+                    </DisabledButton>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={12} className={classes.gridLine}>
+            <Grid container spacing={1}>
+              <Grid item xs={6} sm={3} className={classes.gridCell}>
+                <CardMedia
+                  className={classes.chefMedia}
+                  image={`${require("./1292787404612543931.png")}`}
+                  title=""
+                />
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.profile}
+                  color="textSecondary"
+                  component="p"
+                >
+                  徐璎俊
+                </Typography>
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.subProfile}
+                  color="textSecondary"
+                  component="p"
+                >
+                  杏花楼
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                align="center"
+                style={{ order: matchesMobile ? 2 : "initial" }}
+              >
+                <CardMedia
+                  className={classes.liveMedia}
+                  image={`${require("./csf.jpg")}`}
+                  title=""
+                />
+                <div className={classes.receipeMenu}>日式叉烧煲仔饭</div>
+              </Grid>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                align="center"
+                style={{ order: matchesMobile ? 3 : "initial" }}
+              >
+                <CardMedia
+                  className={classes.liveMedia}
+                  image={`${require("./zsmlj.jpg")}`}
+                  title=""
+                />
+                <div className={classes.receipeMenu}>芝士米粒卷</div>
+              </Grid>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                style={{
+                  backgroundImage: `url(${require("./qr-title.png")})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center 0",
+                  textAalign: "center",
+                  order: matchesMobile ? 1 : "initial",
+                }}
+              >
+                <Grid container direction="column">
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      className={classes.qrTitle}
                       color="textSecondary"
                       component="p"
                     >
@@ -550,47 +862,118 @@ export default function Pricing(props) {
                     <Typography
                       variant="h5"
                       align="center"
+                      className={classes.qrTitle}
                       color="textSecondary"
                       component="p"
                     >
                       ​20点-21点
                     </Typography>
                   </Grid>
+                  <Grid item align="center">
+                    <CardMedia
+                      className={classes.qrMedia}
+                      image={`${require("./1304258617961528995.jpeg")}`}
+                      title=""
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      className={classes.qrTitle}
+                      color="textSecondary"
+                      component="p"
+                    >
+                      扫描二维码报名进群
+                    </Typography>
+                  </Grid>
+                  <Grid item align="center">
+                    <DisabledButton
+                      variant="contained"
+                      size="small"
+                      color="primary"
+                      className={classes.greenRoundButton}
+                    >
+                      观看视频
+                    </DisabledButton>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid item xs={12} className={classes.gridLine}>
             <Grid container spacing={1}>
-              <Grid item xs={6} sm={3}>
-                <Paper className={classes.paper}>xs=6 sm=3</Paper>
+              <Grid item xs={6} sm={3} className={classes.gridCell}>
+                <CardMedia
+                  className={classes.chefMedia}
+                  image={`${require("./1292805003310135070.png")}`}
+                  title=""
+                />
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.profile}
+                  color="textSecondary"
+                  component="p"
+                >
+                  陶锋杰​
+                </Typography>
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.subProfile}
+                  color="textSecondary"
+                  component="p"
+                >
+                  曼己客厨艺研修院
+                </Typography>
               </Grid>
-              <Grid item xs={6} sm={3}>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                align="center"
+                style={{ order: matchesMobile ? 2 : "initial" }}
+              >
                 <CardMedia
                   className={classes.liveMedia}
                   image={`${require("./ygmhb.jpg")}`}
                   title=""
                 />
+                <div className={classes.receipeMenu}>越光米汉堡</div>
               </Grid>
-              <Grid item xs={6} sm={3}>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                align="center"
+                style={{ order: matchesMobile ? 3 : "initial" }}
+              >
                 <CardMedia
                   className={classes.liveMedia}
                   image={`${require("./ygktdbf.jpg")}`}
                   title=""
                 />
+                <div className={classes.receipeMenu}>越光卡通蛋包饭</div>
               </Grid>
-              <Grid item xs={6} sm={3} style={{
-                    backgroundImage: `url(${require('./qr-title.png')})`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'center 0',
-                    textAalign: "center",
-                }}>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                style={{
+                  backgroundImage: `url(${require("./qr-title.png")})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center 0",
+                  textAalign: "center",
+                }}
+              >
                 <Grid container direction="column">
                   <Grid item>
                     <Typography
                       variant="h5"
                       align="center"
+                      className={classes.qrTitle}
                       color="textSecondary"
                       component="p"
                     >
@@ -601,47 +984,118 @@ export default function Pricing(props) {
                     <Typography
                       variant="h5"
                       align="center"
+                      className={classes.qrTitle}
                       color="textSecondary"
                       component="p"
                     >
                       ​20点-21点
                     </Typography>
                   </Grid>
+                  <Grid item align="center">
+                    <CardMedia
+                      className={classes.qrMedia}
+                      image={`${require("./1304258670717498462.jpeg")}`}
+                      title=""
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      className={classes.qrTitle}
+                      color="textSecondary"
+                      component="p"
+                    >
+                      扫描二维码报名进群
+                    </Typography>
+                  </Grid>
+                  <Grid item align="center">
+                    <DisabledButton
+                      variant="contained"
+                      color="primary"
+                      size="small"
+                      className={classes.greenRoundButton}
+                    >
+                      观看视频
+                    </DisabledButton>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid item xs={12} className={classes.gridLine}>
             <Grid container spacing={1}>
-              <Grid item xs={6} sm={3}>
-                <Paper className={classes.paper}>xs=6 sm=3</Paper>
+              <Grid item xs={6} sm={3} className={classes.gridCell}>
+                <CardMedia
+                  className={classes.chefMedia}
+                  image={`${require("./1292805003551417787.png")}`}
+                  title=""
+                />
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.profile}
+                  color="textSecondary"
+                  component="p"
+                >
+                  王翔
+                </Typography>
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.subProfile}
+                  color="textSecondary"
+                  component="p"
+                >
+                  德兴馆
+                </Typography>
               </Grid>
-              <Grid item xs={6} sm={3}>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                align="center"
+                style={{ order: matchesMobile ? 2 : "initial" }}
+              >
                 <CardMedia
                   className={classes.liveMedia}
                   image={`${require("./hfglnrsm.jpg")}`}
                   title=""
                 />
+                <div className={classes.receipeMenu}>和风咖喱牛肉烧麦</div>
               </Grid>
-              <Grid item xs={6} sm={3}>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                align="center"
+                style={{ order: matchesMobile ? 3 : "initial" }}
+              >
                 <CardMedia
                   className={classes.liveMedia}
                   image={`${require("./yzxmlg.png")}`}
                   title=""
                 />
+                <div className={classes.receipeMenu}>柚子小米拉糕</div>
               </Grid>
-              <Grid item xs={6} sm={3} style={{
-                    backgroundImage: `url(${require('./qr-title.png')})`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'center 0',
-                    textAalign: "center",
-                }}>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                style={{
+                  backgroundImage: `url(${require("./qr-title.png")})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center 0",
+                  textAalign: "center",
+                }}
+              >
                 <Grid container direction="column">
                   <Grid item>
                     <Typography
                       variant="h5"
                       align="center"
+                      className={classes.qrTitle}
                       color="textSecondary"
                       component="p"
                     >
@@ -652,47 +1106,120 @@ export default function Pricing(props) {
                     <Typography
                       variant="h5"
                       align="center"
+                      className={classes.qrTitle}
                       color="textSecondary"
                       component="p"
                     >
                       ​20点-21点
                     </Typography>
                   </Grid>
+                  <Grid item align="center">
+                    <CardMedia
+                      className={classes.qrMedia}
+                      image={`${require("./1304258726086491811.jpeg")}`}
+                      title=""
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      className={classes.qrTitle}
+                      color="textSecondary"
+                      component="p"
+                    >
+                      扫描二维码报名进群
+                    </Typography>
+                  </Grid>
+                  <Grid item align="center">
+                    <DisabledButton
+                      variant="contained"
+                      color="primary"
+                      size="small"
+                      className={classes.greenRoundButton}
+                    >
+                      观看视频
+                    </DisabledButton>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid item xs={12} className={classes.gridLine}>
             <Grid container spacing={1}>
-              <Grid item xs={6} sm={3}>
-                <Paper className={classes.paper}>xs=6 sm=3</Paper>
+              <Grid item xs={6} sm={3} className={classes.gridCell}>
+                <CardMedia
+                  className={classes.chefMedia}
+                  image={`${require("./1298206126081676942.png")}`}
+                  title=""
+                />
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.profile}
+                  color="textSecondary"
+                  component="p"
+                >
+                  秦卓男
+                </Typography>
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.subProfile}
+                  color="textSecondary"
+                  component="p"
+                >
+                  臻嗪
+                </Typography>
               </Grid>
-              <Grid item xs={6} sm={3}>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                align="center"
+                style={{ order: matchesMobile ? 2 : "initial" }}
+              >
                 <CardMedia
                   className={classes.liveMedia}
                   image={`${require("./mfps.png")}`}
                   title=""
                 />
+                <div className={classes.receipeMenu}>米饭披萨(配味噌汤)</div>
               </Grid>
-              <Grid item xs={6} sm={3}>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                align="center"
+                style={{ order: matchesMobile ? 3 : "initial" }}
+              >
                 <CardMedia
                   className={classes.liveMedia}
                   image={`${require("./myhbcbf.jpg")}`}
                   title=""
                 />
+                <div className={classes.receipeMenu} style={{ width: 214 }}>
+                  木鱼花包菜包饭(配炸猪排)
+                </div>
               </Grid>
-              <Grid item xs={6} sm={3} style={{
-                    backgroundImage: `url(${require('./qr-title.png')})`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'center 0',
-                    textAalign: "center",
-                }}>
+              <Grid
+                item
+                xs={6}
+                sm={3}
+                style={{
+                  backgroundImage: `url(${require("./qr-title.png")})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center 0",
+                  textAalign: "center",
+                }}
+              >
                 <Grid container direction="column">
                   <Grid item>
                     <Typography
                       variant="h5"
                       align="center"
+                      className={classes.qrTitle}
                       color="textSecondary"
                       component="p"
                     >
@@ -703,11 +1230,40 @@ export default function Pricing(props) {
                     <Typography
                       variant="h5"
                       align="center"
+                      className={classes.qrTitle}
                       color="textSecondary"
                       component="p"
                     >
                       ​20点-21点
                     </Typography>
+                  </Grid>
+                  <Grid item align="center">
+                    <CardMedia
+                      className={classes.qrMedia}
+                      image={`${require("./1304258789265306718.jpeg")}`}
+                      title=""
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      className={classes.qrTitle}
+                      color="textSecondary"
+                      component="p"
+                    >
+                      扫描二维码报名进群
+                    </Typography>
+                  </Grid>
+                  <Grid item align="center">
+                    <DisabledButton
+                      variant="contained"
+                      color="primary"
+                      size="small"
+                      className={classes.greenRoundButton}
+                    >
+                      观看视频
+                    </DisabledButton>
                   </Grid>
                 </Grid>
               </Grid>
@@ -759,7 +1315,7 @@ export default function Pricing(props) {
               sm={4}
               style={{ alignItems: "center", display: "flex" }}
             >
-              <a href='./zxgm.html'>
+              <a href={matchesMobile ? "./m_zxgm.html" : "./zxgm.html"}>
                 <RoundGreenButton
                   variant="contained"
                   color="primary"
@@ -913,7 +1469,7 @@ export default function Pricing(props) {
             >
               更多创意菜谱&创意菜谱提交
             </Typography>
-            <a href="./mf.html">
+            <a href={matchesMobile ? "m_mf.html" : "./mf.html"}>
               <ColorButton
                 fullWidth
                 size="large"
@@ -1120,12 +1676,20 @@ export default function Pricing(props) {
         </div>
         <Divider />
         <List>
-          {["首页", "米饭创意菜谱", "在线购买"].map((text, index) => (
-            <ListItem button key={text} style={{ textAlign: "center" }}>
+          {[
+            { p: "首页", l: "#" },
+            { p: "米饭创意菜谱", l: "./m_mf.html" },
+            { p: "在线购买", l: "./m_zxgm.html" },
+          ].map((obj, index) => (
+            <ListItem button key={obj.p} style={{ textAlign: "center" }}>
               {/* <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon> */}
-              <ListItemText primary={text} alignitems="center" />
+              <ListItemText
+                primary={obj.p}
+                alignitems="center"
+                onClick={() => (window.location.href = obj.l)}
+              />
             </ListItem>
           ))}
         </List>
