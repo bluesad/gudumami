@@ -10,7 +10,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Button from '@material-ui/core/Button';
-
+import {ColorButton} from './AppDownload';
 
 const useStyles = makeStyles({
   card: {
@@ -86,7 +86,7 @@ export default function FeaturedPost(props) {
             {post.subTitle}
           </Typography>
           <Typography variant="subtitle1" paragraph>
-            <div
+            <section
               dangerouslySetInnerHTML={{
                 __html: post.description,
               }}
@@ -97,21 +97,23 @@ export default function FeaturedPost(props) {
                 color: "rgb(121, 121, 121)",
                 fontWeight: 400,
               }}
-            ></div>
+            ></section>
           </Typography>
           <Typography variant="subtitle1" className={classes.ctaText}>
             ​{post.ctaText}
           </Typography>
 					<div style={{textAlign: 'center'}}>
-						<Button
-							variant="contained"
-							color="secondary"
-							size="large"
-							className={classes.button}
-							startIcon={<AddShoppingCartIcon />}
-						>
-							在线购买
-						</Button>
+            <a href='./zxgm.html'>
+              <ColorButton
+                variant="contained"
+                color="secondary"
+                size="large"
+                className={classes.button}
+                startIcon={<AddShoppingCartIcon />}
+              >
+                在线购买
+              </ColorButton>
+            </a>
 					</div>
         </CardContent>
       </div>

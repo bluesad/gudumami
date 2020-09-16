@@ -26,6 +26,7 @@ const useStyles = makeStyles({
     height: 73,
   },
 });
+
 export const ColorButton = withStyles((theme) => ({
   root: {
     color: theme.palette.getContrastText(deepOrange[500]),
@@ -56,14 +57,16 @@ export default function AppDownload(props) {
               <Typography component="h2" variant="h5" style={{fontSize: 20, color: 'rgb(121, 121, 121)'}}>
                 {post.title}
               </Typography>
-              <ColorButton
-                variant="contained"
-                color="secondary"
-                size="large"
-                className={classes.button}
-              >
-                点击购买
-              </ColorButton>
+              <a href={post.link}>
+                <ColorButton
+                  variant="contained"
+                  color="secondary"
+                  size="large"
+                  className={classes.button}
+                >
+                  点击购买
+                </ColorButton>
+              </a>
               {/* <Typography variant="subtitle1" color="textSecondary">
                 {post.date}
               </Typography>

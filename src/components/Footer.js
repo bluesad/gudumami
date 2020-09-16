@@ -5,7 +5,7 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
-function Copyright(props) {
+export function Copyright(props) {
   return (
     <Typography
       variant="body2"

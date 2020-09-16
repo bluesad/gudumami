@@ -4,9 +4,9 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { zhCN } from '@material-ui/core/locale';
 
 import './index.scss';
-import App from './App';
+// import App from './App';
 import Pricing from './pages/Pricing';
-import DrawerDemo from './components/DrawerDemo';
+// import DrawerDemo from './components/DrawerDemo';
 import * as serviceWorker from './serviceWorker';
 
 

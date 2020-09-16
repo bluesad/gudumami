@@ -14,7 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -41,124 +41,8 @@ import AppDownload, {ColorButton} from '../components/AppDownload';
 import CardMedia from '@material-ui/core/CardMedia';
 import MainFeaturedPost from '../components/MainFeaturedPost';
 import Footer from '../components/Footer';
-import { deepOrange } from '@material-ui/core/colors';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const useStyles = makeStyles((theme) => ({
-  '@global': {
-    ul: {
-      margin: 0,
-      padding: 0,
-			width: '100vw',
-      listStyle: 'none',
-    },
-  },
-  appBar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
-  },
-  toolbar: {
-    flexWrap: 'wrap',
-		backgroundColor: 'rgba(249,245,160,1)',
-		minHeight: 50,
-    borderBottom: '1px solid #fff'
-  },
-  toolbarTitle: {
-    flexGrow: 1,
-  },
-  link: {
-    margin: theme.spacing(1, 1.5),
-  },
-  heroContent: {
-    padding: theme.spacing(8, 0, 6),
-    // border: '1px solid red'
-  },
-  cardHeader: {
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
-  },
-  cardPricing: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'baseline',
-    marginBottom: theme.spacing(2),
-  },
-  footer: {
-    borderTop: `1px solid ${theme.palette.divider}`,
-    marginTop: theme.spacing(8),
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3),
-    [theme.breakpoints.up('sm')]: {
-      paddingTop: theme.spacing(6),
-      paddingBottom: theme.spacing(6),
-    },
-  },
-	hide: {
-    display: 'none',
-  },
-	drawer: {
-    width: '100vw',
-    flexShrink: 0,
-  },
-	drawerPaper: {
-    width: '100vw',
-		alignItems: 'center',
-		textAlign: 'center',
-  },
-	drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-		color: 'white',
-    // necessary for content to be below app bar
-    justifyContent: 'flex-start',
-  },
-	root: {
-		position: 'fixed',
-		display: 'flex',
-		bottom: theme.spacing(2),
-		right: theme.spacing(2),
-	},
-  herobar: {
-    height: 'auto',
-    // height: 685.5,
-    backgroundImage: `url(${require('./1292745016802146078.png')})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-  },
-  rightBanner: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  receipeMedia: {
-    width: 278,
-    height: 207,
-    borderRadius: 20,
-    margin: '0 auto'
-  },
-  buttonHead: {
-    color: '#fff',
-    backgroundColor: 'rgb(255, 69, 0)',
-    borderRadius: 40,
-    width: 300,
-    height: 44,
-    lineHeight: '44px',
-    margin: '0 auto'
-    // lineHeight: 44,
-  }
-}));
+import { green } from '@material-ui/core/colors';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 const tiers = [
   {
@@ -257,9 +141,27 @@ const footers = [
     description: ['Privacy policy', 'Terms of use'],
   },
 ];
+const featuredPosts = [
+  {
+    title: '成都荣町食品有限公司',
+    date: 'Nov 12',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    image: `${require('./1292817804122629563.png')}`,
+    link: 'https://item.taobao.com/item.htm?spm=a1z10.1-c-s.w4004-21142807355.10.2afd5a25hI5kuP&id=596611922031',
+  },
+  {
+    title: '成都荣町食品有限公司',
+    date: 'Nov 11',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    image: `${require('./1296393346437538599.png')}`,
+    link: 'https://weidian.com/item.html?itemID=1942277080&wfr=wxp_wxh5&ifr=itemdetail&spider_token=fe4a&share_relation=eb648a4fb2b49595_1209426052_3&state=H5WXshareOld&distributorId=1209426052&from=singlemessage&isappinstalled=0',
+  },
+];
+const videoPlayer = `<iframe src="//player.bilibili.com/player.html?aid=40243276&bvid=BV1ht411s7H2&cid=70679545&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" load="lazy"> </iframe>`;
 
-
-function ScrollTop(props) {
+export function ScrollTop(props) {
   const { children, window } = props;
   const classes = useStyles();
   // Note that you normally won't need to set the window ref as useScrollTrigger
@@ -297,24 +199,177 @@ ScrollTop.propTypes = {
   window: PropTypes.func,
 };
 
-const featuredPosts = [
-  {
-    title: '成都荣町食品有限公司',
-    date: 'Nov 12',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: `${require('./1292817804122629563.png')}`,
-    link: 'https://item.taobao.com/item.htm?spm=a1z10.1-c-s.w4004-21142807355.10.2afd5a25hI5kuP&id=596611922031',
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+export const RoundGreenButton = withStyles((theme) => ({
+  root: {
+    color: theme.palette.getContrastText(green[700]),
+		borderRadius: 40,
+		width: 170,
+    backgroundColor: green[500],
+    '&:hover': {
+      backgroundColor: green[700],
+    },
   },
-  {
-    title: '成都荣町食品有限公司',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: `${require('./1296393346437538599.png')}`,
-    link: 'https://weidian.com/item.html?itemID=1942277080&wfr=wxp_wxh5&ifr=itemdetail&spider_token=fe4a&share_relation=eb648a4fb2b49595_1209426052_3&state=H5WXshareOld&distributorId=1209426052&from=singlemessage&isappinstalled=0',
+}))(Button);
+
+const useStyles = makeStyles((theme) => ({
+  '@global': {
+    ul: {
+      margin: 0,
+      padding: 0,
+			width: '100vw',
+      listStyle: 'none',
+    },
   },
-];
+  appBar: {
+    borderBottom: `1px solid ${theme.palette.divider}`,
+  },
+  toolbar: {
+    flexWrap: 'wrap',
+		backgroundColor: 'rgba(249,245,160,1)',
+		minHeight: 50,
+    borderBottom: '1px solid #fff'
+  },
+  toolbarTitle: {
+    flexGrow: 1,
+  },
+  link: {
+    margin: theme.spacing(1, 1.5),
+  },
+  heroContent: {
+    padding: theme.spacing(8, 0, 6),
+    // border: '1px solid red'
+  },
+  cardHeader: {
+    backgroundColor:
+      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
+  },
+  cardPricing: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'baseline',
+    marginBottom: theme.spacing(2),
+  },
+  footer: {
+    borderTop: `1px solid ${theme.palette.divider}`,
+    marginTop: theme.spacing(8),
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(3),
+    [theme.breakpoints.down('sm')]: {
+      paddingTop: theme.spacing(6),
+      paddingBottom: theme.spacing(6),
+    },
+  },
+	hide: {
+    display: 'none',
+  },
+	drawer: {
+    width: '100vw',
+    flexShrink: 0,
+  },
+	drawerPaper: {
+    width: '100vw',
+		alignItems: 'center',
+		textAlign: 'center',
+  },
+	drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+		color: 'white',
+    // necessary for content to be below app bar
+    justifyContent: 'flex-start',
+  },
+	root: {
+		position: 'fixed',
+		display: 'flex',
+		bottom: theme.spacing(2),
+		right: theme.spacing(2),
+	},
+  herobar: {
+    height: 'auto',
+    // height: 685.5,
+    backgroundImage: `url(${require('./1292745016802146078.png')})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+  },
+  rightBanner: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  receipeMedia: {
+    width: 278,
+    height: 207,
+    borderRadius: 20,
+    margin: '0 auto',
+    [theme.breakpoints.down('sm')]: {
+      width: 135,
+      height: 101,
+    },
+  },
+  strawMedia: {
+    width: 225,
+    height: 304,
+    borderRadius: 20,
+    margin: '0 auto',
+    [theme.breakpoints.down('sm')]: {
+      width: 119,
+      height: 161,
+    },
+  },
+  strawTitle: {
+    fontFamily: '微软雅黑',
+    fontSize: 34,
+    color: 'rgb(27, 27, 27)',
+    fontWeight: 700,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 17,
+    },
+  },
+  buttonHead: {
+    color: '#fff',
+    backgroundColor: 'rgb(255, 69, 0)',
+    borderRadius: 40,
+    width: 300,
+    height: 44,
+    lineHeight: '44px',
+    margin: '0 auto'
+    // lineHeight: 44,
+  },
+  bottomHeadlineMedia: {
+    width: 374,
+    height: 58,
+    backgroundSize: 'cover',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      height: 43,
+      backgroundSize: 'contain'
+    },
+  },
+  liveMedia: {
+    width: 238,
+    height: 178,
+    borderRadius: 20,
+    [theme.breakpoints.down('sm')]: {
+      width: 147,
+      height: 111,
+    },
+  }
+}));
+
 
 
 export default function Pricing(props) {
@@ -433,50 +488,362 @@ export default function Pricing(props) {
           </Container>
         </Grid>
       </Grid>
-      <div style={{padding: '40px 0', backgroundImage: `url(${require('./1296343136998974247.png')})`, backgroundRepeat: 'no-repeat', backgroundPosition: '0 30px'}}>
-      <Container maxWidth="lg" component="main" className={classes.heroContent}>
+
+      <Container maxWidth="lg">
         <Typography
-          component="p"
-          variant="h5"
-          align="center"
-          color="deepOrange"
-          className={classes.buttonHead}
-          gutterBottom
-        >
-          富山县产越光方便米饭
-        </Typography>
-        <Typography
-          component="h1"
-          variant="h3"
-          align="center"
-          color="textPrimary"
-          gutterBottom
-        >
-          米饭创意菜谱
-        </Typography>
-        <Typography
+          style={{
+            fontFamily: "微软雅黑",
+            fontSize: 43,
+            color: "rgb(7, 145, 58)",
+            fontWeight: 700,
+          }}
           variant="h5"
           align="center"
           color="textSecondary"
-          component="p"
+          component="header"
         >
-          米饭创意菜谱等你来创造哦~
+          ​直播活动报名
         </Typography>
+
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Grid container spacing={1}>
+              <Grid item xs={6} sm={3}>
+                <CardMedia
+                  className={classes.liveMedia}
+                  image={`${require("./1292787404612543931.png")}`}
+                  title=""
+                />
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <CardMedia
+                  className={classes.liveMedia}
+                  image={`${require("./csf.jpg")}`}
+                  title=""
+                />
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <CardMedia
+                  className={classes.liveMedia}
+                  image={`${require("./zsmlj.jpg")}`}
+                  title=""
+                />
+              </Grid>
+              <Grid item xs={6} sm={3} style={{
+                    backgroundImage: `url(${require('./qr-title.png')})`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center 0',
+                    textAalign: "center",
+                }}>
+                <Grid container direction="column">
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      ​9月19日
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      ​20点-21点
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Grid container spacing={1}>
+              <Grid item xs={6} sm={3}>
+                <Paper className={classes.paper}>xs=6 sm=3</Paper>
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <CardMedia
+                  className={classes.liveMedia}
+                  image={`${require("./ygmhb.jpg")}`}
+                  title=""
+                />
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <CardMedia
+                  className={classes.liveMedia}
+                  image={`${require("./ygktdbf.jpg")}`}
+                  title=""
+                />
+              </Grid>
+              <Grid item xs={6} sm={3} style={{
+                    backgroundImage: `url(${require('./qr-title.png')})`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center 0',
+                    textAalign: "center",
+                }}>
+                <Grid container direction="column">
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      ​9月20日
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      ​20点-21点
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Grid container spacing={1}>
+              <Grid item xs={6} sm={3}>
+                <Paper className={classes.paper}>xs=6 sm=3</Paper>
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <CardMedia
+                  className={classes.liveMedia}
+                  image={`${require("./hfglnrsm.jpg")}`}
+                  title=""
+                />
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <CardMedia
+                  className={classes.liveMedia}
+                  image={`${require("./yzxmlg.png")}`}
+                  title=""
+                />
+              </Grid>
+              <Grid item xs={6} sm={3} style={{
+                    backgroundImage: `url(${require('./qr-title.png')})`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center 0',
+                    textAalign: "center",
+                }}>
+                <Grid container direction="column">
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      ​9月26日
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      ​20点-21点
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Grid container spacing={1}>
+              <Grid item xs={6} sm={3}>
+                <Paper className={classes.paper}>xs=6 sm=3</Paper>
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <CardMedia
+                  className={classes.liveMedia}
+                  image={`${require("./mfps.png")}`}
+                  title=""
+                />
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <CardMedia
+                  className={classes.liveMedia}
+                  image={`${require("./myhbcbf.jpg")}`}
+                  title=""
+                />
+              </Grid>
+              <Grid item xs={6} sm={3} style={{
+                    backgroundImage: `url(${require('./qr-title.png')})`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center 0',
+                    textAalign: "center",
+                }}>
+                <Grid container direction="column">
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      ​9月29日
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      variant="h5"
+                      align="center"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      ​20点-21点
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
       </Container>
-      {/* End hero unit */}
-      <Container maxWidth="lg" component="main">
-        <Grid container spacing={5} alignItems="flex-end">
-          {tiers.map((tier) => (
-            // Enterprise card is full width at sm breakpoint
+
+      <Grid
+        container
+        style={{
+          backgroundImage: `url(${require("./1292791012674479547.png")})`,
+          marginBottom: "-100px",
+          height: matchesMobile ? "300px" : "initial",
+          alignItems: matchesMobile ? "center" : "initial",
+        }}
+      >
+        <Container
+          container
+          spacing={1}
+          maxWidth="lg"
+          style={{ display: "flex" }}
+        >
+          <Grid item xs={6} sm={3}>
+            <CardMedia
+              className={classes.strawMedia}
+              image={`${require("./straw.png")}`}
+              title=""
+            />
+          </Grid>
+          <Grid container item spacing={1} xs={6} sm={9}>
             <Grid
               item
-              key={tier.title}
               xs={12}
-              sm={tier.title === "Enterprise" ? 12 : 6}
-              md={4}
+              sm={4}
+              style={{ alignItems: "center", display: "flex" }}
             >
-              <div>
-                {/* <CardHeader
+              <Typography
+                component="h2"
+                variant="h5"
+                className={classes.strawTitle}
+              >
+                供应商采购信息
+              </Typography>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              sm={4}
+              style={{ alignItems: "center", display: "flex" }}
+            >
+              <a href='./zxgm.html'>
+                <RoundGreenButton
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  className={classes.greenRoundButton}
+                  startIcon={<AddShoppingCartIcon />}
+                >
+                  在线购买
+                </RoundGreenButton>
+              </a>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              sm={4}
+              style={{ order: matchesMobile ? -1 : "initial" }}
+            >
+              <CardMedia
+                className={classes.receipeMedia}
+                image={`${require("./strawSample.png")}`}
+                style={{ backgroundSize: "contain" }}
+                title=""
+              />
+            </Grid>
+          </Grid>
+        </Container>
+      </Grid>
+
+      <div
+        style={{
+          padding: "40px 0",
+          backgroundImage: `url(${require("./1296343136998974247.png")})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "0 30px",
+        }}
+      >
+        <Container
+          maxWidth="lg"
+          component="main"
+          className={classes.heroContent}
+        >
+          <Typography
+            component="p"
+            variant="h5"
+            align="center"
+            color="secondary" // "initial","inherit","primary","secondary","textPrimary","textSecondary","error"
+            className={classes.buttonHead}
+            gutterBottom
+          >
+            富山县产越光方便米饭
+          </Typography>
+          <Typography
+            component="h1"
+            variant="h4"
+            align="center"
+            color="textPrimary"
+            gutterBottom
+            style={{ color: "rgb(255, 69, 0)" }}
+          >
+            米饭创意菜谱
+          </Typography>
+          <Typography
+            variant="h5"
+            align="center"
+            color="textSecondary"
+            component="p"
+          >
+            米饭创意菜谱等你来创造哦~
+          </Typography>
+        </Container>
+        {/* End hero unit */}
+        <Container maxWidth="lg" component="main">
+          <Grid container spacing={5} alignItems="flex-end">
+            {tiers.map((tier) => (
+              // Enterprise card is full width at sm breakpoint
+              <Grid
+                item
+                key={tier.title}
+                xs={6}
+                sm={tier.title === "Enterprise" ? 12 : 6}
+                md={4}
+              >
+                <div>
+                  {/* <CardHeader
                   // title={tier.title}
                   // subheader={tier.subheader}
                   titleTypographyProps={{ align: "center" }}
@@ -484,13 +851,13 @@ export default function Pricing(props) {
                   action={tier.title === "Pro" ? <StarIcon /> : null}
                   className={classes.cardHeader}
                 /> */}
-                <CardContent>
-                  <CardMedia
-                    className={classes.receipeMedia}
-                    image={tier.image}
-                    title=""
-                  />
-                  {/* <div className={classes.cardPricing}>
+                  <CardContent>
+                    <CardMedia
+                      className={classes.receipeMedia}
+                      image={tier.image}
+                      title=""
+                    />
+                    {/* <div className={classes.cardPricing}>
                     <Typography component="h2" variant="h3" color="textPrimary">
                       ${tier.price}
                     </Typography>
@@ -498,7 +865,7 @@ export default function Pricing(props) {
                       /mo
                     </Typography>
                   </div> */}
-                  {/* <ul>
+                    {/* <ul>
                     {tier.description.map((line) => (
                       <Typography
                         component="li"
@@ -510,49 +877,226 @@ export default function Pricing(props) {
                       </Typography>
                     ))}
                   </ul> */}
-                </CardContent>
-                <CardActions
+                  </CardContent>
+                  <CardActions
+                    style={{
+                      margin: "0 auto",
+                      textAlign: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <a href={tier.link}>
+                      <ColorButton
+                        fullWidth
+                        // variant={tier.buttonVariant}
+                        color="primary"
+                      >
+                        {tier.title} >>
+                      </ColorButton>
+                    </a>
+                  </CardActions>
+                </div>
+              </Grid>
+            ))}
+          </Grid>
+          <Box
+            container
+            spacing={5}
+            alignItems="center"
+            style={{ textAlign: "center", marginTop: 20 }}
+          >
+            <Typography
+              variant="h5"
+              align="center"
+              color="textSecondary"
+              component="p"
+            >
+              更多创意菜谱&创意菜谱提交
+            </Typography>
+            <a href="./mf.html">
+              <ColorButton
+                fullWidth
+                size="large"
+                style={{ transform: "scale(1.2)", marginTop: 10 }}
+                variant="contained"
+                color="primary"
+              >
+                点击进入 >>
+              </ColorButton>
+            </a>
+          </Box>
+        </Container>
+      </div>
+      <Container maxWidth="lg">
+        {matchesMobile && (
+          <Typography
+            style={{
+              fontFamily: "微软雅黑",
+              fontSize: 22.7513,
+              paddingBottom: "30px",
+              color: "rgb(7, 145, 58)",
+              fontWeight: 700,
+              lineHeight: "1.2em",
+            }}
+            variant="h5"
+            align="left"
+            color="textSecondary"
+            component="header"
+          >
+            产品介绍
+          </Typography>
+        )}
+        <Grid container spacing={3} component="main">
+          <Grid item xs={12} sm={6}>
+            <Paper
+              style={{
+                height: matchesMobile ? 160 : 313,
+              }}
+              className={classes.paper}
+              dangerouslySetInnerHTML={{
+                __html: videoPlayer,
+              }}
+            ></Paper>
+          </Grid>
+          {!matchesMobile && (
+            <Grid item xs={12} sm={2}>
+              <Grid container spacing={1} direction="column">
+                <Grid item>
+                  <Typography
+                    style={{
+                      fontFamily: "微软雅黑",
+                      fontSize: 43,
+                      color: "rgb(7, 145, 58)",
+                      fontWeight: 700,
+                    }}
+                    variant="h5"
+                    align="left"
+                    color="textSecondary"
+                    component="header"
+                  >
+                    产品介绍
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <CardMedia
+                    image={`${require("./arrow.png")}`}
+                    title=""
+                    style={{
+                      width: "100%",
+                      height: 73,
+                      backgroundSize: "contain",
+                      backgroundPosition: "right",
+                    }}
+                  />
+                </Grid>
+                <Grid item>
+                  <CardMedia
+                    image={`${require("./prodIntro.png")}`}
+                    title=""
+                    style={{
+                      height: 200,
+                      backgroundSize: "contain",
+                    }}
+                  />
+                </Grid>
+              </Grid>
+            </Grid>
+          )}
+          <Grid item xs={12} sm={4}>
+            <Grid container spacing={1} direction="column">
+              <Grid item>
+                <CardMedia
+                  className={classes.bottomHeadlineMedia}
+                  image={`${require("./bottomHeadline.png")}`}
+                  title=""
+                />
+              </Grid>
+              {matchesMobile && (
+                <Grid item>
+                  <Grid container spacing={1}>
+                    <Grid item xs={6} sm={6}>
+                      <CardMedia
+                        image={`${require("./prodIntro.png")}`}
+                        title=""
+                        style={{
+                          height: 200,
+                          backgroundSize: "contain",
+                        }}
+                      />
+                    </Grid>
+                    <Grid item xs={6} sm={6}>
+                      <Grid container spacing={1} direction="column">
+                        <Grid item>
+                          <Typography
+                            style={{
+                              fontFamily: "微软雅黑",
+                              fontSize: 20,
+                              color: "rgb(7, 145, 58)",
+                              fontWeight: 700,
+                              lineHeight: "1.2em",
+                              marginTop: 50,
+                            }}
+                            variant="h5"
+                            align="left"
+                            color="textSecondary"
+                            component="header"
+                          >
+                            富山县产越光方便米饭
+                          </Typography>
+                        </Grid>
+                        <Grid item>
+                          <CardMedia
+                            image={`${require("./arrow.png")}`}
+                            title=""
+                            style={{
+                              width: "100%",
+                              height: 41,
+                              backgroundSize: "contain",
+                              transform: "rotate(39deg)",
+                            }}
+                          />
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              )}
+              {!matchesMobile && (
+                <Grid item>
+                  <Typography
+                    style={{
+                      fontFamily: "微软雅黑",
+                      fontSize: 25,
+                      color: "rgb(7, 145, 58)",
+                      fontWeight: 700,
+                      lineHeight: "1.2em",
+                    }}
+                    variant="h5"
+                    align="left"
+                    color="textSecondary"
+                    component="header"
+                  >
+                    富山县产越光方便米饭
+                  </Typography>
+                </Grid>
+              )}
+              <Grid item>
+                <section
                   style={{
-                    margin: "0 auto",
-                    textAlign: "center",
-                    justifyContent: "center",
+                    textIndent: "30px",
+                    fontFamily: "微软雅黑",
+                    fontSize: "15px",
+                    color: "rgb(121, 121, 121)",
+                    fontWeight: 400,
                   }}
                 >
-                  <a href={tier.link}>
-                    <ColorButton
-                      fullWidth
-                      // variant={tier.buttonVariant}
-                      color="primary"
-                    >
-                      {tier.title} >>
-                    </ColorButton>
-                  </a>
-                </CardActions>
-              </div>
+                  越光方便无菌米饭采用富山县产的免淘洗米、日本名水百选的富山县黑部天然水，制造生产线--利用了清洁蒸汽的瞬间杀菌以及连续煮饭系统。因此，在不使用防腐剂添加剂的情况下，可以做到12个月的保质期。在保持米饭原有风味的情况下，可常温流通及常温保存，利用微波炉加热后就能直接食用，既美味又方便。
+                </section>
+              </Grid>
             </Grid>
-          ))}
+          </Grid>
         </Grid>
-        <Box container spacing={5} alignItems="center" style={{textAlign: 'center', marginTop: 20}}>
-          <Typography
-            variant="h5"
-            align="center"
-            color="textSecondary"
-            component="p"
-          >
-            更多创意菜谱&创意菜谱提交
-          </Typography>
-          <ColorButton
-            fullWidth
-            size="large"
-            style={{transform: 'scale(1.2)', marginTop: 10}}
-            variant="contained"
-            color="primary"
-          >
-            点击进入 >>
-          </ColorButton>
-        </Box>
       </Container>
-      </div>
       <ScrollTop {...props}>
         <Fab color="secondary" size="small" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />
@@ -588,7 +1132,7 @@ export default function Pricing(props) {
       </SwipeableDrawer>
       {/* Footer */}
       <Container maxWidth="md" component="footer" className={classes.footer}>
-        <Grid container spacing={4} justify="space-evenly">
+        {/* <Grid container spacing={4} justify="space-evenly">
           {footers.map((footer) => (
             <Grid item xs={6} sm={3} key={footer.title}>
               <Typography variant="h6" color="textPrimary" gutterBottom>
@@ -605,21 +1149,17 @@ export default function Pricing(props) {
               </ul>
             </Grid>
           ))}
-        </Grid>
+        </Grid> */}
         {/* <Box mt={5}>
           <Copyright />
         </Box> */}
         <Grid container spacing={4}>
           {featuredPosts.map((post) => (
-            <AppDownload key={post.title} post={post} />
+            <AppDownload key={post.date} post={post} />
           ))}
         </Grid>
       </Container>
-      <Container
-        maxWidth="lg"
-        component="app"
-        className={classes.heroContent}
-      ></Container>
+
       <Footer
         title="Footer"
         description="​主办方：（一般社团法人）全日本稻米及相关食品出口促进协议会"
