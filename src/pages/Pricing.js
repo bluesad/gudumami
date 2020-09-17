@@ -1315,7 +1315,7 @@ export default function Pricing(props) {
               sm={4}
               style={{ alignItems: "center", display: "flex" }}
             >
-              <a href={matchesMobile ? "./m_zxgm.html" : "./zxgm.html"}>
+              <a href={matchesMobile ? "./m_zxgm.html" : "./tab/158058"}>
                 <RoundGreenButton
                   variant="contained"
                   color="primary"
@@ -1469,7 +1469,7 @@ export default function Pricing(props) {
             >
               更多创意菜谱&创意菜谱提交
             </Typography>
-            <a href={matchesMobile ? "m_mf.html" : "./mf.html"}>
+            <a href={matchesMobile ? "m_mf.html" : "./tab/157983/"}>
               <ColorButton
                 fullWidth
                 size="large"

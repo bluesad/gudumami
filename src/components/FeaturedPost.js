@@ -105,7 +105,7 @@ export default function FeaturedPost(props) {
             ​{post.ctaText}
           </Typography>
 					<div style={{textAlign: 'center'}}>
-            <a href={matchesMobile ? 'm_zxgm.html' : './zxgm.html'}>
+            <a href={matchesMobile ? 'm_zxgm.html' : './tab/158058'}>
               <ColorButton
                 variant="contained"
                 color="secondary"
