@@ -1,5 +1,5 @@
 #root{
-	overflow-x: hidden;
+	overflow: hidden;
 	font-family: '微软雅黑' !important;
 }
 
@@ -7,7 +7,7 @@
 	width: 100vw;
 }
 .MuiDrawer-root{
-	.MuiPaper-root{
+	.MuiDrawer-paper{
 		background-color: rgba(46, 46, 46, 0.95);
 		color: #fff;
 		overscroll-behavior: contain;

@@ -168,7 +168,7 @@ export function ScrollTop(props) {
   // will default to window.
   // This is only being set here because the demo is in an iframe.
   const trigger = useScrollTrigger({
-    target: window ? window() : undefined,
+    // target: window ? window() : undefined,
     disableHysteresis: true,
     threshold: 100,
   });
@@ -1315,7 +1315,7 @@ export default function Pricing(props) {
               sm={4}
               style={{ alignItems: "center", display: "flex" }}
             >
-              <a href={matchesMobile ? "./m_zxgm.html" : "./tab/158058"}>
+              <a href={matchesMobile ? "./tab/158058/m_zxgm.html" : "./tab/158058"}>
                 <RoundGreenButton
                   variant="contained"
                   color="primary"
@@ -1469,7 +1469,7 @@ export default function Pricing(props) {
             >
               更多创意菜谱&创意菜谱提交
             </Typography>
-            <a href={matchesMobile ? "m_mf.html" : "./tab/157983/"}>
+            <a href={matchesMobile ? "./tab/157983/m_mf.html" : "./tab/157983/"}>
               <ColorButton
                 fullWidth
                 size="large"
@@ -1653,11 +1653,6 @@ export default function Pricing(props) {
           </Grid>
         </Grid>
       </Container>
-      <ScrollTop {...props}>
-        <Fab color="secondary" size="small" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
-        </Fab>
-      </ScrollTop>
       <SwipeableDrawer
         className={classes.drawer}
         variant="persistent"
@@ -1677,9 +1672,9 @@ export default function Pricing(props) {
         <Divider />
         <List>
           {[
-            { p: "首页", l: "#" },
-            { p: "米饭创意菜谱", l: "./m_mf.html" },
-            { p: "在线购买", l: "./m_zxgm.html" },
+            { p: "首页", l: "https://jpfood.gudumami.cn" },
+            { p: "米饭创意菜谱", l: "./tab/157983/m_mf.html" },
+            { p: "在线购买", l: "./tab/158058/m_zxgm.html" },
           ].map((obj, index) => (
             <ListItem button key={obj.p} style={{ textAlign: "center" }}>
               {/* <ListItemIcon>
@@ -1728,6 +1723,11 @@ export default function Pricing(props) {
         title="Footer"
         description="​主办方：（一般社团法人）全日本稻米及相关食品出口促进协议会"
       />
+      <ScrollTop {...props}>
+        <Fab color="secondary" size="small" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollTop>
       {/* End footer */}
     </React.Fragment>
   );
