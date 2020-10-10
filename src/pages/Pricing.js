@@ -51,7 +51,7 @@ const tiers = [
     description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
     buttonText: 'Sign up for free',
     buttonVariant: 'outlined',
-    link: 'http://jpfood.gudumami.cn/video/157375_27865_member_1_57315',
+    link: 'https://www.bilibili.com/video/BV1Lp4y1e7mQ',
     image: `${require('./1292820822964544955.jpg')}`
   },
   {
@@ -66,7 +66,7 @@ const tiers = [
     ],
     buttonText: 'Get started',
     buttonVariant: 'contained',
-    link: 'http://jpfood.gudumami.cn/video/157375_27861_member_1_57315',
+    link: 'https://www.bilibili.com/video/BV1PV411m7nv',
     image: `${require('./1292820822800967099.jpg')}`
   },
   {
@@ -80,7 +80,7 @@ const tiers = [
     ],
     buttonText: 'Contact us',
     buttonVariant: 'outlined',
-    link: 'http://jpfood.gudumami.cn/video/157375_27863_member_1_57315',
+    link: 'https://www.bilibili.com/video/BV1F54y1y7EW',
     image: `${require('./1292820825908946363.jpg')}`
   },
 
@@ -90,7 +90,7 @@ const tiers = [
     description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
     buttonText: 'Sign up for free',
     buttonVariant: 'outlined',
-    link: 'http://jpfood.gudumami.cn/video/157375_27869_member_1_57315',
+    link: 'https://www.bilibili.com/video/BV1Xv41117M3',
     image: `${require('./1292820826470983099.jpg')}`
   },
   {
@@ -105,7 +105,7 @@ const tiers = [
     ],
     buttonText: 'Get started',
     buttonVariant: 'contained',
-    link: 'http://jpfood.gudumami.cn/video/157375_27871_member_1_57315',
+    link: 'https://www.bilibili.com/video/BV17k4y1y7u7',
     image: `${require('./1292820825107834299.jpg')}`
   },
   {
@@ -119,7 +119,7 @@ const tiers = [
     ],
     buttonText: 'Contact us',
     buttonVariant: 'outlined',
-    link: 'http://jpfood.gudumami.cn/video/157375_27867_member_1_57315',
+    link: 'https://www.bilibili.com/video/BV1TV411m7ju',
     image: `${require('./1298141363507225383.jpg')}`
   },
 ];
@@ -146,7 +146,7 @@ const featuredPosts = [
     title: '成都荣町食品有限公司',
     date: 'Nov 12',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      '天猫',
     image: `${require('./1292817804122629563.png')}`,
     link: 'https://item.taobao.com/item.htm?spm=a1z10.1-c-s.w4004-21142807355.10.2afd5a25hI5kuP&id=596611922031',
   },
@@ -154,7 +154,7 @@ const featuredPosts = [
     title: '成都荣町食品有限公司',
     date: 'Nov 11',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      '微店',
     image: `${require('./1296393346437538599.png')}`,
     link: 'https://weidian.com/item.html?itemID=1942277080&wfr=wxp_wxh5&ifr=itemdetail&spider_token=fe4a&share_relation=eb648a4fb2b49595_1209426052_3&state=H5WXshareOld&distributorId=1209426052&from=singlemessage&isappinstalled=0',
   },
@@ -582,7 +582,7 @@ export default function Pricing(props) {
             fontSize: 43,
             color: "rgb(7, 145, 58)",
             fontWeight: 700,
-            margin: '30px 0',
+            margin: "30px 0",
           }}
           variant="h5"
           align="center"
@@ -593,7 +593,12 @@ export default function Pricing(props) {
         </Typography>
 
         <Grid container spacing={3}>
-          <Grid item xs={12} className={classes.gridLine} style={{marginBottom:  matchesMobile ? 80 : 0,}}>
+          <Grid
+            item
+            xs={12}
+            className={classes.gridLine}
+            style={{ marginBottom: matchesMobile ? 80 : 0 }}
+          >
             <Grid container spacing={1}>
               <Grid item xs={6} sm={3} className={classes.gridCell}>
                 <CardMedia
@@ -688,7 +693,7 @@ export default function Pricing(props) {
               >
                 <CardMedia
                   className={classes.chefMedia}
-                  style={{backgroundPositionX: 20}}
+                  style={{ backgroundPositionX: 20 }}
                   image={`${require("./1299183976695311175.png")}`}
                   title=""
                 />
@@ -1161,7 +1166,7 @@ export default function Pricing(props) {
                   color="textSecondary"
                   component="p"
                 >
-                  秦卓男
+                  刘洪
                 </Typography>
                 <Typography
                   variant="h5"
@@ -1170,7 +1175,7 @@ export default function Pricing(props) {
                   color="textSecondary"
                   component="p"
                 >
-                  臻嗪
+                  马勒别墅
                 </Typography>
               </Grid>
               <Grid
@@ -1315,7 +1320,16 @@ export default function Pricing(props) {
               sm={4}
               style={{ alignItems: "center", display: "flex" }}
             >
-              <a href={matchesMobile ? "./tab/158058/m_zxgm.html" : "./tab/158058"}>
+              <a
+                href={
+                  matchesMobile ? "./tab/158058/m_zxgm.html" : "./tab/158058"
+                }
+                onClick={() =>
+                  window?.gtag("event", "screen_view", {
+                    screen_name: "在线购买",
+                  })
+                }
+              >
                 <RoundGreenButton
                   variant="contained"
                   color="primary"
@@ -1441,7 +1455,16 @@ export default function Pricing(props) {
                       justifyContent: "center",
                     }}
                   >
-                    <a href={tier.link}>
+                    <a
+                      href={tier.link}
+                      onClick={() =>
+                        window?.gtag("event", "video", {
+                          "event-category": "bilibili",
+                          event_label: tier.title,
+                          value: tier.title,
+                        })
+                      }
+                    >
                       <ColorButton
                         fullWidth
                         // variant={tier.buttonVariant}
@@ -1469,7 +1492,14 @@ export default function Pricing(props) {
             >
               更多创意菜谱&创意菜谱提交
             </Typography>
-            <a href={matchesMobile ? "./tab/157983/m_mf.html" : "./tab/157983/"}>
+            <a
+              href={matchesMobile ? "./tab/157983/m_mf.html" : "./tab/157983/"}
+              onClick={() =>
+                window?.gtag("event", "screen_view", {
+                  screen_name: "创意菜谱",
+                })
+              }
+            >
               <ColorButton
                 fullWidth
                 size="large"
@@ -1683,7 +1713,12 @@ export default function Pricing(props) {
               <ListItemText
                 primary={obj.p}
                 alignitems="center"
-                onClick={() => (window.location.href = obj.l)}
+                onClick={() => {
+                  window.gtag("event", "screen_view", {
+                    screen_name: obj.p
+                  });
+                  window.location.href = obj.l;
+                }}
               />
             </ListItem>
           ))}

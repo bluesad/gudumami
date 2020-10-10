@@ -57,7 +57,7 @@ export default function AppDownload(props) {
               <Typography component="h2" variant="h5" style={{fontSize: 20, color: 'rgb(121, 121, 121)'}}>
                 {post.title}
               </Typography>
-              <a href={post.link}>
+              <a href={post.link} onClick={()=> window?.gtag('event', 'product_browsed', {'event-category': post.description ,'event_label': post.title, value: post.description }) }>
                 <ColorButton
                   variant="contained"
                   color="secondary"
