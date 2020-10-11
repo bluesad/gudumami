@@ -1,0 +1,378 @@
+/**
+ * Created by shidongdong on 2019/9/16.
+ */
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.show-coupon {
+  font: 12px/1.5 'Microsoft YaHei', tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+  color: #333;
+  outline: 0;
+}
+.show-coupon * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.show-coupon .coupon-wrap {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+}
+.show-coupon .my-coupons > div {
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+.show-coupon .my-coupons > div .center-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.show-coupon .my-coupons .get-qrCode {
+  width: 306px;
+  height: 372px;
+  background: #fff;
+}
+.show-coupon .my-coupons .get-qrCode .center-box {
+  width: 306px;
+  height: 372px;
+}
+.show-coupon .my-coupons .get-qrCode .center-box > div {
+  color: #333;
+}
+.show-coupon .my-coupons .get-qrCode .center-box > div:nth-child(1) {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100% 100%;
+  background-image: url("/publishNuxtStatic/coupon/coupon12/img/coupon1/pc/pc-qr-close.png");
+  cursor: pointer;
+}
+.show-coupon .my-coupons .get-qrCode .center-box > div:nth-child(2) {
+  margin-top: 24px;
+  margin-left: 28px;
+  color: #797979;
+  align-self: flex-start;
+}
+.show-coupon .my-coupons .get-qrCode .center-box > div:nth-child(3) {
+  width: 216px;
+  height: 216px;
+  margin-top: 15px;
+}
+.show-coupon .my-coupons .get-qrCode .center-box > div:nth-child(4) {
+  margin-top: 15px;
+  margin-left: 28px;
+  align-self: flex-start;
+}
+.show-coupon .my-coupons .get-qrCode .center-box > div:nth-child(5) {
+  margin-top: 5px;
+  margin-left: 28px;
+  align-self: flex-start;
+}
+.show-coupon .deduction .get-coupon {
+  width: 600px;
+  height: 673px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100% 100%;
+  background-image: url("/publishNuxtStatic/coupon/coupon12/img/coupon1/pc/pc-want-bg.png");
+}
+.show-coupon .deduction .get-coupon .center-box {
+  width: 382px;
+  height: 516px;
+  margin-left: 37px;
+}
+.show-coupon .deduction .get-coupon .center-box > div {
+  color: #fff;
+}
+.show-coupon .deduction .get-coupon .center-box > div:nth-child(1) {
+  width: 288px;
+  height: 110px;
+  font-size: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fe3841;
+  margin-left: -48px;
+  font-weight: bold;
+}
+.show-coupon .deduction .get-coupon .center-box > div:nth-child(2) {
+  font-size: 27px;
+  margin-top: 70px;
+}
+.show-coupon .deduction .get-coupon .center-box > div:nth-child(3) {
+  font-size: 25px;
+}
+.show-coupon .deduction .get-coupon .center-box > div:nth-child(4) {
+  width: 252px;
+  height: 70px;
+  cursor: pointer;
+  margin-top: 20px;
+  overflow: hidden;
+}
+.show-coupon .deduction .get-coupon .center-box > div:nth-child(4) > img {
+  width: 100%;
+  object-fit: cover;
+}
+.show-coupon .deduction .get-coupon .center-box > div:nth-child(4).active {
+  cursor: default;
+}
+.show-coupon .deduction .get-coupon .center-box > div:nth-child(5) {
+  font-size: 16px;
+  margin-top: 30px;
+}
+.show-coupon .deduction .get-coupon .center-box > div:nth-child(6) {
+  font-size: 16px;
+  margin-top: 10px;
+}
+.show-coupon .deduction .get-coupon .center-box > div:nth-child(7) {
+  font-size: 16px;
+  margin-top: 10px;
+}
+.show-coupon .deduction .get-coupon .center-box > div:nth-child(8) {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 38px;
+  height: 38px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100% 100%;
+  background-image: url("/publishNuxtStatic/coupon/coupon12/img/coupon2/pc/pc-all-close.png");
+  cursor: pointer;
+}
+.show-coupon .deduction .get-coupon-succ {
+  justify-content: flex-end;
+  width: 460px;
+  height: 467px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100% 100%;
+  background-image: url("/publishNuxtStatic/coupon/coupon12/img/coupon1/pc/pc-succ-bg.png");
+}
+.show-coupon .deduction .get-coupon-succ .center-box {
+  width: 460px;
+  height: 420px;
+  justify-content: flex-end;
+  position: relative;
+}
+.show-coupon .deduction .get-coupon-succ .center-box > div {
+  color: #f73c17;
+}
+.show-coupon .deduction .get-coupon-succ .center-box > div:nth-child(1) {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 19px;
+  height: 19px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100% 100%;
+  background-image: url("/publishNuxtStatic/coupon/coupon12/img/coupon1/pc/pc-succ-close.png");
+  cursor: pointer;
+}
+.show-coupon .deduction .get-coupon-succ .center-box > div:nth-child(2) {
+  font-size: 30px;
+}
+.show-coupon .deduction .get-coupon-succ .center-box > div:nth-child(3) {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.show-coupon .deduction .get-coupon-succ .center-box > div:nth-child(4) {
+  font-size: 16px;
+  color: #999;
+  margin-bottom: 25px;
+}
+.show-coupon .deduction .get-coupon-succ .center-box > div:nth-child(5) {
+  width: 224px;
+  height: 52px;
+  cursor: pointer;
+  margin-bottom: 35px;
+  overflow: hidden;
+}
+.show-coupon .deduction .get-coupon-succ .center-box > div:nth-child(5) > img {
+  width: 100%;
+  object-fit: cover;
+}
+.show-coupon .discount .get-coupon {
+  width: 500px;
+  height: 547px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100% 100%;
+  background-image: url("/publishNuxtStatic/coupon/coupon12/img/coupon2/pc/pc-want-bg.png");
+}
+.show-coupon .discount .get-coupon .center-box {
+  width: 310px;
+  height: 547px;
+  justify-content: flex-end;
+  position: relative;
+}
+.show-coupon .discount .get-coupon .center-box > div {
+  color: #fff;
+}
+.show-coupon .discount .get-coupon .center-box > div:nth-child(1) {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  width: 38px;
+  height: 38px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100% 100%;
+  background-image: url("/publishNuxtStatic/coupon/coupon12/img/coupon2/pc/pc-all-close.png");
+  cursor: pointer;
+}
+.show-coupon .discount .get-coupon .center-box > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+.show-coupon .discount .get-coupon .center-box > div:nth-child(2) > div:nth-child(1) {
+  font-size: 38px;
+  line-height: 40px;
+}
+.show-coupon .discount .get-coupon .center-box > div:nth-child(2) > div:nth-child(2) {
+  font-size: 76px;
+  font-weight: bold;
+  /* margin-left: 10px; */
+  color: #fedeb4;
+}
+.show-coupon .discount .get-coupon .center-box > div:nth-child(2) > div:nth-child(3) {
+  font-size: 20px;
+  align-self: flex-end;
+}
+.show-coupon .discount .get-coupon .center-box > div:nth-child(3) {
+  font-size: 20px;
+  margin-bottom: 33px;
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  -webkit-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+  text-indent: -40px;
+}
+.show-coupon .discount .get-coupon .center-box > div:nth-child(4) {
+  width: 274px;
+  height: 52px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+.show-coupon .discount .get-coupon .center-box > div:nth-child(4) > img {
+  width: 100%;
+  object-fit: cover;
+}
+.show-coupon .discount .get-coupon .center-box > div:nth-child(4).active {
+  cursor: default;
+}
+.show-coupon .discount .get-coupon .center-box > div:nth-child(5) {
+  font-size: 14px;
+}
+.show-coupon .discount .get-coupon .center-box > div:nth-child(6) {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+.show-coupon .discount .get-coupon-succ {
+  justify-content: flex-end;
+  width: 430px;
+  height: 456px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100% 100%;
+  background-image: url("/publishNuxtStatic/coupon/coupon12/img/coupon2/pc/pc-succ-bg.png");
+}
+.show-coupon .discount .get-coupon-succ .center-box {
+  width: 285px;
+  height: 456px;
+  justify-content: flex-end;
+  position: relative;
+  margin-left: 48px;
+}
+.show-coupon .discount .get-coupon-succ .center-box > div {
+  color: #fff;
+}
+.show-coupon .discount .get-coupon-succ .center-box > div:nth-child(1) {
+  position: absolute;
+  right: 0;
+  top: 15px;
+  width: 38px;
+  height: 38px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100% 100%;
+  background-image: url("/publishNuxtStatic/coupon/coupon12/img/coupon2/pc/pc-all-close.png");
+  cursor: pointer;
+}
+.show-coupon .discount .get-coupon-succ .center-box > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 237px;
+  height: 88px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  justify-content: space-between;
+}
+.show-coupon .discount .get-coupon-succ .center-box > div:nth-child(2) > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.show-coupon .discount .get-coupon-succ .center-box > div:nth-child(2) > div:nth-child(1) {
+  width: 158px;
+}
+.show-coupon .discount .get-coupon-succ .center-box > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) {
+  font-size: 60px;
+  font-weight: bold;
+}
+.show-coupon .discount .get-coupon-succ .center-box > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) {
+  align-self: flex-end;
+  font-size: 16px;
+  margin-left: 5px;
+  margin-bottom: 15px;
+}
+.show-coupon .discount .get-coupon-succ .center-box > div:nth-child(2) > div:nth-child(2) {
+  width: 77px;
+  height: 100%;
+  padding: 5px;
+  font-size: 16px;
+}
+.show-coupon .discount .get-coupon-succ .center-box > div:nth-child(3) {
+  width: 246px;
+  height: 46px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.show-coupon .discount .get-coupon-succ .center-box > div:nth-child(3) > img {
+  width: 100%;
+  object-fit: cover;
+}
+.show-coupon .discount .get-coupon-succ .center-box > div:nth-child(4) {
+  margin-bottom: 25px;
+}

@@ -1,0 +1,424 @@
+@font-face {
+  font-family: Adobe Caslon;
+  src: url("Adobe Caslon.ttf");
+}
+@font-face {
+  font-family: Amatic SC;
+  src: url("Amatic SC.ttf");
+}
+@font-face {
+  font-family: american Typewriter;
+  src: url("american Typewriter.ttf");
+}
+@font-face {
+  font-family: Anton;
+  src: url("Anton.ttf");
+}
+@font-face {
+  font-family: Arial Black;
+  src: url("Arial Black.ttf");
+}
+@font-face {
+  font-family: Arial;
+  src: url("Arial.ttf");
+}
+@font-face {
+  font-family: Avenida;
+  src: url("Avenida.ttf");
+}
+@font-face {
+  font-family: Avenir Light;
+  src: url("Avenir Light.otf");
+}
+@font-face {
+  font-family: Avenir;
+  src: url("Avenir.otf");
+}
+@font-face {
+  font-family: Barlow Extra Light;
+  src: url("Barlow Extra Light.otf");
+}
+@font-face {
+  font-family: Barlow Medium;
+  src: url("Barlow Medium.otf");
+}
+@font-face {
+  font-family: Basic;
+  src: url("Basic.ttf");
+}
+@font-face {
+  font-family: Belinda;
+  src: url("Belinda.ttf");
+}
+@font-face {
+  font-family: Bodoni Poster;
+  src: url("Bodoni Poster.ttf");
+}
+@font-face {
+  font-family: Braggadocio;
+  src: url("Braggadocio.ttf");
+}
+@font-face {
+  font-family: Brandon Grotesque;
+  src: url("Brandon Grotesque.otf");
+}
+@font-face {
+  font-family: Bree;
+  src: url("Bree.ttf");
+}
+@font-face {
+  font-family: Caudex;
+  src: url("Caudex.ttf");
+}
+@font-face {
+  font-family: Chelsea Market;
+  src: url("Chelsea Market.ttf");
+}
+@font-face {
+  font-family: Cinzel;
+  src: url("Cinzel.ttf");
+}
+@font-face {
+  font-family: Clarendon;
+  src: url("Clarendon .ttf");
+}
+@font-face {
+  font-family: comic sans MS;
+  src: url("comic sans MS.ttf");
+}
+@font-face {
+  font-family: Cookie;
+  src: url("Cookie.ttf");
+}
+@font-face {
+  font-family: Coquette;
+  src: url("Coquette.otf");
+}
+@font-face {
+  font-family: Corben;
+  src: url("Corben.ttf");
+}
+@font-face {
+  font-family: Cormorant Garamond Light;
+  src: url("Cormorant Garamond Light.ttf");
+}
+@font-face {
+  font-family: Cormorant Garamond Semi Bold;
+  src: url("Cormorant Garamond Semi Bold.ttf");
+}
+@font-face {
+  font-family: Courier New;
+  src: url("Courier New.TTF");
+}
+@font-face {
+  font-family: Damion;
+  src: url("Damion.ttf");
+}
+@font-face {
+  font-family: Dancing Script Regular;
+  src: url("Dancing Script Regular.ttf");
+}
+@font-face {
+  font-family: DIN Neuzeit Grotesk;
+  src: url("DIN Neuzeit Grotesk.otf");
+}
+@font-face {
+  font-family: Droid Serif;
+  src: url("Droid Serif.ttf");
+}
+@font-face {
+  font-family: EB Garamond;
+  src: url("EB Garamond.otf");
+}
+@font-face {
+  font-family: Enriqueta;
+  src: url("Enriqueta.ttf");
+}
+@font-face {
+  font-family: Forum;
+  src: url("Forum.ttf");
+}
+@font-face {
+  font-family: Fredericka the Great;
+  src: url("Fredericka the Great.ttf");
+}
+@font-face {
+  font-family: Futura Light;
+  src: url("Futura Light.otf");
+}
+@font-face {
+  font-family: Futura;
+  src: url("Futura.TTF");
+}
+@font-face {
+  font-family: Georgia;
+  src: url("Georgia.ttf");
+}
+@font-face {
+  font-family: Geotica Four Open;
+  src: url("Geotica Four Open.ttf");
+}
+@font-face {
+  font-family: Helvetica Bold;
+  src: url("Helvetica Bold.otf");
+}
+@font-face {
+  font-family: Helvetica Light;
+  src: url("Helvetica Light.otf");
+}
+@font-face {
+  font-family: Helvetica;
+  src: url("Helvetica.ttf");
+}
+@font-face {
+  font-family: Impact;
+  src: url("Impact.otf");
+}
+@font-face {
+  font-family: ITC Arecibo;
+  src: url("ITC Arecibo.otf");
+}
+@font-face {
+  font-family: Jockey One;
+  src: url("Jockey One.ttf");
+}
+@font-face {
+  font-family: Josefin Slab;
+  src: url("Josefin Slab.ttf");
+}
+@font-face {
+  font-family: Jura;
+  src: url("Jura.ttf");
+}
+@font-face {
+  font-family: Kelly Slab;
+  src: url("Kelly Slab.ttf");
+}
+@font-face {
+  font-family: Kepler;
+  src: url("Kepler.ttf");
+}
+@font-face {
+  font-family: Lato Light;
+  src: url("Lato Light.ttf");
+}
+@font-face {
+  font-family: Libre Baskerville;
+  src: url("Libre Baskerville.otf");
+}
+@font-face {
+  font-family: Linotype Didot;
+  src: url("Linotype Didot.otf");
+}
+@font-face {
+  font-family: Lobster;
+  src: url("Lobster.ttf");
+}
+@font-face {
+  font-family: Lucida Console;
+  src: url("Lucida Console.ttf");
+}
+@font-face {
+  font-family: Lucida Sans Unicode;
+  src: url("Lucida Sans Unicode.ttf");
+}
+@font-face {
+  font-family: Lulo Clean;
+  src: url("Lulo Clean.otf");
+}
+@font-face {
+  font-family: Marck Script;
+  src: url("Marck Script.ttf");
+}
+@font-face {
+  font-family: Marzo;
+  src: url("Marzo.otf");
+}
+@font-face {
+  font-family: Monoton;
+  src: url("Monoton.ttf");
+}
+@font-face {
+  font-family: Monotype Baskerville;
+  src: url("Monotype Baskerville.ttf");
+}
+@font-face {
+  font-family: Montserrat;
+  src: url("Montserrat.ttf");
+}
+@font-face {
+  font-family: Mr De Haviland;
+  src: url("Mr De Haviland.ttf");
+}
+@font-face {
+  font-family: Museo Slab;
+  src: url("Museo Slab.otf");
+}
+@font-face {
+  font-family: Museo;
+  src: url("Museo.ttf");
+}
+@font-face {
+  font-family: Niconne;
+  src: url("Niconne.ttf");
+}
+@font-face {
+  font-family: Nimbus Sans;
+  src: url("Nimbus Sans.ttf");
+}
+@font-face {
+  font-family: Noticia Text;
+  src: url("Noticia Text.ttf");
+}
+@font-face {
+  font-family: Open Sans Condensed;
+  src: url("Open Sans Condensed.ttf");
+}
+@font-face {
+  font-family: Open Sans;
+  src: url("Open Sans.ttf");
+}
+@font-face {
+  font-family: Oswald Extra Light;
+  src: url("Oswald Extra Light.otf");
+}
+@font-face {
+  font-family: Oswald Medium;
+  src: url("Oswald Medium.ttf");
+}
+@font-face {
+  font-family: Overlock;
+  src: url("Overlock.ttf");
+}
+@font-face {
+  font-family: Pacifica Condensed;
+  src: url("Pacifica Condensed.otf");
+}
+@font-face {
+  font-family: palatino Linotype;
+  src: url("palatino Linotype.ttf");
+}
+@font-face {
+  font-family: patrick Hand;
+  src: url("patrick Hand.otf");
+}
+@font-face {
+  font-family: Peaches Cream;
+  src: url("Peaches & Cream.ttf");
+}
+@font-face {
+  font-family: Play;
+  src: url("Play.ttf");
+}
+@font-face {
+  font-family: Playfair Display Bold;
+  src: url("Playfair Display Bold.ttf");
+}
+@font-face {
+  font-family: Playfair Display;
+  src: url("Playfair Display.ttf");
+}
+@font-face {
+  font-family: Poppins ExtraLight;
+  src: url("Poppins ExtraLight.otf");
+}
+@font-face {
+  font-family: Poppins Semi Bold;
+  src: url("Poppins Semi Bold.otf");
+}
+@font-face {
+  font-family: proxima Nova;
+  src: url("proxima Nova.ttf");
+}
+@font-face {
+  font-family: Questrial;
+  src: url("Questrial.ttf");
+}
+@font-face {
+  font-family: Raleway Semi Bold;
+  src: url("Raleway Semi Bold.ttf");
+}
+@font-face {
+  font-family: Raleway;
+  src: url("Raleway.ttf");
+}
+@font-face {
+  font-family: reklame script;
+  src: url("reklame script.ttf");
+}
+@font-face {
+  font-family: Roboto Bold;
+  src: url("Roboto Bold.ttf");
+}
+@font-face {
+  font-family: Roboto Thin;
+  src: url("Roboto Thin.ttf");
+}
+@font-face {
+  font-family: Rosewood;
+  src: url("Rosewood.otf");
+}
+@font-face {
+  font-family: Rozha One;
+  src: url("Rozha One.otf");
+}
+@font-face {
+  font-family: Sacramento;
+  src: url("Sacramento.ttf");
+}
+@font-face {
+  font-family: Sail;
+  src: url("Sail.otf");
+}
+@font-face {
+  font-family: Sarina;
+  src: url("Sarina.ttf");
+}
+@font-face {
+  font-family: Signika;
+  src: url("Signika.ttf");
+}
+@font-face {
+  font-family: Snell Roundhand;
+  src: url("Snell Roundhand.ttc");
+}
+@font-face {
+  font-family: Soho Condensed;
+  src: url("Soho Condensed.otf");
+}
+@font-face {
+  font-family: Spinnaker;
+  src: url("Spinnaker.ttf");
+}
+@font-face {
+  font-family: Stencil;
+  src: url("Stencil.TTF");
+}
+@font-face {
+  font-family: Suez One;
+  src: url("Suez One.ttf");
+}
+@font-face {
+  font-family: Tahoma;
+  src: url("Tahoma.ttf");
+}
+@font-face {
+  font-family: Times New Roman;
+  src: url("Times New Roman.ttf");
+}
+@font-face {
+  font-family: Trend;
+  src: url("Trend.ttf");
+}
+@font-face {
+  font-family: Verdana;
+  src: url("Verdana.ttf");
+}
+@font-face {
+  font-family: Work Sans Extra Light;
+  src: url("Work Sans Extra Light.ttf");
+}
+@font-face {
+  font-family: Work Sans Semi Bold;
+  src: url("Work Sans Semi Bold.ttf");
+}

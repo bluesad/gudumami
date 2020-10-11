@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://www.zuma.com/audio_web/audio/dataframe.html -->
+<html lang="en"><script type="text/javascript" class="__REQUESTLY__SCRIPT">(function(namespace) {
+  window[namespace] = window[namespace] || {};
+  window[namespace].responseRules = {};
+
+  let open = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function(method) {
+    this.addEventListener('readystatechange', function() {
+      if (this.readyState === 4 && window[namespace].responseRules.hasOwnProperty(this.responseURL)) {
+        const responseRule = window[namespace].responseRules[this.responseURL];
+        const {response, id} = responseRule;
+        const responseType = this.responseType;
+        let customResponse;
+
+        customResponse = response.type === 'code' ? responseRule.evaluator({
+            method,
+            url: this.responseURL,
+            requestHeaders: this.requestHeaders,
+            requestData: this.requestData,
+            responseType: this.responseType,
+            response: this.response
+          }) : response.value;
+
+        Object.defineProperty(this, 'response', {
+          get: function () {
+            if (response.type === 'static' && responseType === 'json') {
+              return JSON.parse(customResponse);
+            }
+            return customResponse;
+          }
+        });
+
+        if (responseType === '' || responseType === 'text') {
+          Object.defineProperty(this, 'responseText', {
+            get: function () {
+              return customResponse;
+            }
+          });
+        }
+
+        window.postMessage({
+          from: 'requestly',
+          type: 'response_rule_applied',
+          id
+        }, window.location.href);
+      }
+    }, false);
+    open.apply(this, arguments);
+  };
+
+  let send = XMLHttpRequest.prototype.send;
+  XMLHttpRequest.prototype.send = function(data) {
+    this.requestData = data;
+    send.apply(this, arguments);
+  };
+
+  let setRequestHeader = XMLHttpRequest.prototype.setRequestHeader;
+  XMLHttpRequest.prototype.setRequestHeader = function(header, value) {
+    this.requestHeaders = this.requestHeaders || {};
+    this.requestHeaders[header] = value;
+    setRequestHeader.apply(this, arguments);
+  }
+})('__REQUESTLY__')</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>dataframe</title>
+<script src="./jquery-1.11.3.min.js" type="text/javascript"></script><script src="./musicCookie(1).js" type="text/javascript"></script></head>
+<body style="">
+
+
+<script>
+    var head = document.getElementsByTagName('head')[0];
+    var jquery_js = document.createElement("script");
+    var cookie_js = document.createElement("script");
+    jquery_js.src=window.location.origin+"/static/thirdparty/js/jquery-1.11.3.min.js";
+    cookie_js.src=window.location.origin+"/audio_web/audio/javascript/musicCookie.js";
+    jquery_js.type = 'text/javascript';
+    cookie_js.type = 'text/javascript';
+    head.appendChild(jquery_js);
+    head.appendChild(cookie_js);
+    function playerAddMusic(musicList, isMV, isPlay,nowlistType) {
+        console.log(musicList);
+        /**
+         * 跳转播放页公共方法toMusicPlayer(musicIds:(要播放的音频ID,多个音频ID以“,”分割),isMV:(要播放的是否是MV,0:否,1:是),isPlay:(是否立即播放,0:否,1:是))
+         *
+         * 存入Cookie的值说明;
+         * zm_player_open:判断播放器是否打开(打开:zm_player_open=1;关闭:zm_player_open=0)
+         * zm_play_isMV:判断要播放的是否是MV(是:zm_play_isMV=1;否:zm_play_isMV=0)
+         * zm_play_list_type:当前播放器播放列表类型(正在播放=-1,播放历史=-2,我的收藏=-3,全部音频=0,歌单=歌单的ID)
+         * zm_play_index:当前播放器播放的音频下标(从0开始) zm_play_order:页面播放顺序(默认0:顺序播放)
+         * zm_player_set:播放器设置(两个值用“|”分割(例:“0|1”),第一个值:是否保留播放历史(0:不保留,1:保留),第二个值:新增播放设置(0:立即播放,1:添加到播放列队末尾,2:下一首播放),)
+         * 播放器设置默认值(1|0),保留播放历史,立即播放;
+         *
+         * 存入localStorage的值说明; zm_player_update:数据更新时间戳;
+         * zm_player_music_list:当前播放器音频列表集合(JSON格式存储);
+         * zm_player_music_history:当前播放器音频历史列表集合(JSON格式存储);
+         * zm_player_mv_list:当前播放器MV播放列表集合(JSON格式存储);
+         * zm_player_addMusic:要添加到播放器的音频(JSON格式存储)(addPlayList:添加到播放列表(musicList:要添加到播放列表的音频
+         * ,isPlay:是否立即播放(0:否，1:是)))
+         *
+         */
+
+        var playerIsOpen = parseInt(cookie.get("zm_player_open"));// 获取Cookie值判断播放器是否打开
+        var isSaveHistory = 1;// 是否保留播放历史标识(0:不保留,1:保留)
+        var newPlaySet = 0;// 新增播放设置标识(0:立即播放,1:添加到播放列队末尾,2:下一首播放)
+        var playerSet = cookie.get("zm_player_set");// 读取保存在Cookie的播放器设置项
+        if (playerSet) {// 判断Cookie是否存有设置项,如果没有则添加默认设置
+            var t = playerSet.split("|");
+            isSaveHistory = t[0];
+            newPlaySet = t[1];
+            if(newPlaySet!=0){
+                isPlay=0;
+            }
+        } else {// 播放器设置默认值
+            cookie.set("zm_player_set", "1|0");
+        }
+        console.log("播放器设置:" + playerSet);
+        cookie.set("zm_play_isMV", isMV);// 要播放的是否是MV,isMV:(0:否，1:是)
+        listType = nowlistType;
+        cookie.set("zm_play_list_type", nowlistType);//要播放列表类型
+        if(musicList){
+            var timestamp = new Date().getTime();// 获取当前系统时间戳
+            var addPlayList = {
+                "addPlayList" : {
+                    "musicList" : musicList,
+                    "isPlay" : isPlay
+                }
+            };// 要添加到播放列表数据
+            // 判断播放器是否打开
+            if (playerIsOpen != 1) {// 播放器未打开
+                console.log("播放器未打开:" + playerIsOpen);
+                localStorage.setItem("zm_player_update", timestamp); // 向本地存入时间戳
+                // 判断zm_play_index的值
+                if ((cookie.get("zm_play_index") === '') || (cookie.get("zm_play_index") == 0)) {
+                    if (cookie.get("zm_play_index") === '') {// 判断zm_play_index的值是否是空
+                        localStorage.removeItem("zm_player_music_list")// 清除zm_player_music_list
+                        localStorage.removeItem("zm_player_mv_list")// 清除zm_player_mv_list
+                        // 清空当前播放器音频历史列表集合
+                        localStorage.setItem("zm_player_music_history", JSON.stringify({
+                            "musicPlayHistory" : {
+                                "musicList" : null
+                            }
+                        }));
+                        if (isMV == 0) {
+                            //音频临时列表
+                            localStorage.setItem("zm_player_music_list", JSON.stringify({
+                                "musicPlayList" : {
+                                    "musicList" : musicList
+                                }
+                            }));// 播放器正在播放列表的音频
+                        } else {
+                            //MV播放历史列表
+                            localStorage.setItem("zm_player_mv_history",JSON.stringify({
+                                "mvPlayHistory" :{
+                                    "mvList" : musicList
+                                }
+                            }));// 播放器mv播放历史列表
+                        }
+                    }else if (cookie.get("zm_play_index") == 0) {// 判断zm_play_index的值是否是0
+                        if (isMV == 0) {
+                            var list = localStorage.getItem("zm_player_music_list"); // 获得要正在播放的音频
+                            // 列表
+                            if (list != null) {
+                                var playList = JSON.parse(list).musicPlayList.musicList;// JSON转换JSON对象
+                                if (playList.length > 0) {
+                                    // 保存要添加到播放列表的音频
+                                    localStorage.setItem("zm_player_addMusic", JSON.stringify(addPlayList));
+                                } else {
+                                    // 播放器正在播放列表的音频
+                                    localStorage.setItem("zm_player_music_list", JSON.stringify({
+                                        "musicPlayList" : {
+                                            "musicList" : musicList
+                                        }
+                                    }));
+                                }
+                            } else {
+                                // 播放器正在播放列表的音频
+                                localStorage.setItem("zm_player_music_list", JSON.stringify({
+                                    "musicPlayList" : {
+                                        "musicList" : musicList
+                                    }
+                                }));
+                            }
+                        } else {
+                            // var list = localStorage.getItem("zm_player_mv_list"); // 获得要正在播放的音频
+                            var list = localStorage.getItem("zm_player_mv_history"); // 获得要播放历史音频
+                            //var playList = JSON.parse(list).mvPlayList.mvList;// JSON转换JSON对象
+                            localStorage.setItem("zm_player_addMusic", JSON.stringify(addPlayList));
+                            localStorage.setItem("zm_player_mv_history",JSON.stringify({
+                                "mvPlayHistory" :{
+                                    "mvList" : musicList
+                                }
+                            }));// 播放器mv播放历史列表
+                        }
+                    }
+                } else {
+                    localStorage.setItem("zm_player_addMusic", JSON.stringify(addPlayList));// 保存要添加到播放列表的音频
+                }
+                cookie.set("zm_play_index", 0);// 保存播放的音频下标
+                // 设置当前播放器播放列表类型
+                // playerObj = window.open(playerUrl, "zumaMusicPlayer");// 打开播放器
+                parent.window.postMessage("audio1","*");// 打开播放器
+                /*            if(isMV==0&&playerObj){
+                                setTimeout(function(){
+                                    playerObj.$(".audio-play .play-icon").click();
+                                },4000);
+                            }*/
+            } else {// 播放器已打开
+                console.log("播放器已打开:" + playerIsOpen);
+                // 新增播放设置标识
+                if ((newPlaySet == 0) || (isPlay == 1)) {
+                    // 设置当前播放器播放列表类型
+                    cookie.set("zm_play_list_type", 0);
+                } else if (newPlaySet == 1) {
+
+                } else if (newPlaySet == 2) {
+
+                }
+                localStorage.setItem("zm_player_addMusic", JSON.stringify(addPlayList));// 保存要添加到播放列表的音频
+                localStorage.setItem("zm_player_update", timestamp); // 向本地存入时间戳
+                var mateUrl=window.location.href;
+                if(mateUrl.indexOf("audioPlay")=="-1"){
+                    parent.window.postMessage("audio0","*")
+                }
+            }
+        }else{
+            cookie.set("zm_play_index", 0);// 保存播放的音频下标
+            // getPlayList(isMV);
+            // playerObj = window.open(playerUrl, "zumaMusicPlayer");// 打开播放器
+            parent.window.postMessage("audio1","*");// 打开播放器
+            /*        if(isMV==0&&playerObj){
+                        setTimeout(function(){
+                            playerObj.$(".audio-play .play-icon").click();
+                        },4000);
+                    }*/
+        }
+    }
+    window.addEventListener("message",function(event){
+        if(event.data.musicList||event.data.isMV||event.data.isPlay||event.data.nowlistType){
+            playerAddMusic(event.data.musicList,event.data.isMV,event.data.isPlay,event.data.nowlistType);
+        }
+    });
+</script>
+</body></html>
