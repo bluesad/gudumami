@@ -674,14 +674,27 @@ export default function Pricing(props) {
                     </Typography>
                   </Grid>
                   <Grid item align="center">
-                    <DisabledButton
-                      variant="contained"
-                      size="small"
-                      color="primary"
-                      className={classes.greenRoundButton}
+                    <a
+                      href="https://www.bilibili.com/video/BV1ua4y1L7ag/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        window?.gtag("event", "video", {
+                          "event-category": "bilibili",
+                          event_label: "9月12日",
+                          value: "9月12日",
+                        })
+                      }
                     >
-                      观看视频
-                    </DisabledButton>
+                      <DisabledButton
+                        variant="contained"
+                        size="small"
+                        color="primary"
+                        className={classes.greenRoundButton}
+                      >
+                        观看视频
+                      </DisabledButton>
+                    </a>
                   </Grid>
                 </Grid>
               </Grid>
@@ -893,14 +906,27 @@ export default function Pricing(props) {
                     </Typography>
                   </Grid>
                   <Grid item align="center">
-                    <DisabledButton
-                      variant="contained"
-                      size="small"
-                      color="primary"
-                      className={classes.greenRoundButton}
+                    <a
+                      href="https://www.bilibili.com/video/BV1ii4y1j7Ev/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        window?.gtag("event", "video", {
+                          "event-category": "bilibili",
+                          event_label: "9月19日",
+                          value: "9月19日",
+                        })
+                      }
                     >
-                      观看视频
-                    </DisabledButton>
+                      <DisabledButton
+                        variant="contained"
+                        size="small"
+                        color="primary"
+                        className={classes.greenRoundButton}
+                      >
+                        观看视频
+                      </DisabledButton>
+                    </a>
                   </Grid>
                 </Grid>
               </Grid>
@@ -1015,14 +1041,27 @@ export default function Pricing(props) {
                     </Typography>
                   </Grid>
                   <Grid item align="center">
-                    <DisabledButton
-                      variant="contained"
-                      color="primary"
-                      size="small"
-                      className={classes.greenRoundButton}
+                    <a
+                      href="https://www.bilibili.com/video/BV1P54y1C7x9/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        window?.gtag("event", "video", {
+                          "event-category": "bilibili",
+                          event_label: "9月20日",
+                          value: "9月20日",
+                        })
+                      }
                     >
-                      观看视频
-                    </DisabledButton>
+                      <DisabledButton
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        className={classes.greenRoundButton}
+                      >
+                        观看视频
+                      </DisabledButton>
+                    </a>
                   </Grid>
                 </Grid>
               </Grid>
@@ -1137,14 +1176,27 @@ export default function Pricing(props) {
                     </Typography>
                   </Grid>
                   <Grid item align="center">
-                    <DisabledButton
-                      variant="contained"
-                      color="primary"
-                      size="small"
-                      className={classes.greenRoundButton}
+                    <a
+                      href="https://www.bilibili.com/video/BV1Cr4y1c71E/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        window?.gtag("event", "video", {
+                          "event-category": "bilibili",
+                          event_label: "9月26日",
+                          value: "9月26日",
+                        })
+                      }
                     >
-                      观看视频
-                    </DisabledButton>
+                      <DisabledButton
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        className={classes.greenRoundButton}
+                      >
+                        观看视频
+                      </DisabledButton>
+                    </a>
                   </Grid>
                 </Grid>
               </Grid>
@@ -1261,14 +1313,27 @@ export default function Pricing(props) {
                     </Typography>
                   </Grid>
                   <Grid item align="center">
-                    <DisabledButton
-                      variant="contained"
-                      color="primary"
-                      size="small"
-                      className={classes.greenRoundButton}
+                    <a
+                      href="https://www.bilibili.com/video/BV1et4y1v7Ca/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        window?.gtag("event", "video", {
+                          "event-category": "bilibili",
+                          event_label: "9月29日",
+                          value: "9月29日",
+                        })
+                      }
                     >
-                      观看视频
-                    </DisabledButton>
+                      <DisabledButton
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        className={classes.greenRoundButton}
+                      >
+                        观看视频
+                      </DisabledButton>
+                    </a>
                   </Grid>
                 </Grid>
               </Grid>
@@ -1715,7 +1780,7 @@ export default function Pricing(props) {
                 alignitems="center"
                 onClick={() => {
                   window.gtag("event", "screen_view", {
-                    screen_name: obj.p
+                    screen_name: obj.p,
                   });
                   window.location.href = obj.l;
                 }}
