@@ -686,14 +686,22 @@ export default function Pricing(props) {
                         })
                       }
                     >
-                      <DisabledButton
+                      <ColorButton
+                        variant="contained"
+                        color="secondary"
+                        size="small"
+                        className={classes.greenRoundButton}
+                      >
+                        观看视频
+                      </ColorButton>
+                      {/* <DisabledButton
                         variant="contained"
                         size="small"
                         color="primary"
                         className={classes.greenRoundButton}
                       >
                         观看视频
-                      </DisabledButton>
+                      </DisabledButton> */}
                     </a>
                   </Grid>
                 </Grid>
@@ -795,14 +803,14 @@ export default function Pricing(props) {
                         })
                       }
                     >
-                      <DisabledButton
+                      <ColorButton
                         variant="contained"
+                        color="secondary"
                         size="small"
-                        color="primary"
                         className={classes.greenRoundButton}
                       >
                         观看视频
-                      </DisabledButton>
+                      </ColorButton>
                     </a>
                   </Grid>
                 </Grid>
@@ -931,14 +939,14 @@ export default function Pricing(props) {
                         })
                       }
                     >
-                      <DisabledButton
+                      <ColorButton
                         variant="contained"
+                        color="secondary"
                         size="small"
-                        color="primary"
                         className={classes.greenRoundButton}
                       >
                         观看视频
-                      </DisabledButton>
+                      </ColorButton>
                     </a>
                   </Grid>
                 </Grid>
@@ -1066,14 +1074,14 @@ export default function Pricing(props) {
                         })
                       }
                     >
-                      <DisabledButton
+                      <ColorButton
                         variant="contained"
-                        color="primary"
+                        color="secondary"
                         size="small"
                         className={classes.greenRoundButton}
                       >
                         观看视频
-                      </DisabledButton>
+                      </ColorButton>
                     </a>
                   </Grid>
                 </Grid>
@@ -1201,14 +1209,14 @@ export default function Pricing(props) {
                         })
                       }
                     >
-                      <DisabledButton
+                      <ColorButton
                         variant="contained"
-                        color="primary"
+                        color="secondary"
                         size="small"
                         className={classes.greenRoundButton}
                       >
                         观看视频
-                      </DisabledButton>
+                      </ColorButton>
                     </a>
                   </Grid>
                 </Grid>
@@ -1338,14 +1346,14 @@ export default function Pricing(props) {
                         })
                       }
                     >
-                      <DisabledButton
+                      <ColorButton
                         variant="contained"
-                        color="primary"
+                        color="secondary"
                         size="small"
                         className={classes.greenRoundButton}
                       >
                         观看视频
-                      </DisabledButton>
+                      </ColorButton>
                     </a>
                   </Grid>
                 </Grid>
