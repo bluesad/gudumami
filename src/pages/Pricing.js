@@ -783,14 +783,27 @@ export default function Pricing(props) {
                     </Typography>
                   </Grid>
                   <Grid item align="center">
-                    <DisabledButton
-                      variant="contained"
-                      size="small"
-                      color="primary"
-                      className={classes.greenRoundButton}
+                    <a
+                      href="https://www.bilibili.com/video/BV1xT4y1w7Qn/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        window?.gtag("event", "video", {
+                          "event-category": "bilibili",
+                          event_label: "9月18日",
+                          value: "9月18日",
+                        })
+                      }
                     >
-                      观看视频
-                    </DisabledButton>
+                      <DisabledButton
+                        variant="contained"
+                        size="small"
+                        color="primary"
+                        className={classes.greenRoundButton}
+                      >
+                        观看视频
+                      </DisabledButton>
+                    </a>
                   </Grid>
                 </Grid>
               </Grid>
