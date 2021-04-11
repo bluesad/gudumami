@@ -1,0 +1,277 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=750,user-scalable=no">
+    <title>上海市肺科医院</title>
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <script src="jquery.min.js"></script>
+    <style>
+
+      #container{overflow: hidden;}
+      .footer{
+        width: 100%;
+        height: 94px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+      }
+      .next_one{
+        width: 208px;
+        height: 210px;
+        position: absolute;
+        top: 333px;
+        right: 35px;
+      }
+      .next_two{
+        width: 694px;
+        height: 76px;
+        position: absolute;
+        top: 220px;
+        left: 50%;
+        /* background: red; */
+        margin-left: -347px;
+      }
+      .next_three{
+        width: 694px;
+        height: 164px;
+        position: absolute;
+        top: 116px;
+        left: 50%;
+        display: none;
+        /* background: blueviolet; */
+        margin-left: -347px;
+        background: url("images/4_m.png") center center no-repeat;
+      }
+      .next_contain{
+        width: 750px;
+        position: absolute;
+        top: 0;
+        left: 750px;
+        height: 100vh;
+        background: #f7f8fb;
+        overflow: hidden;
+      }
+      #two{
+        z-index: 10;
+      }
+      #three{
+        z-index: 11;
+      }
+      #four{
+        z-index: 12;
+      }
+      .loader{
+        display:none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        mix-blend-mode: darken;
+      }
+      .lds-spinner {
+        color: official;
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+        background-color: #494a4c;
+        padding: 10px;
+        border-radius: 8px;
+        z-index: 20;
+        top: 40%;
+        left: 50%;
+        margin-left: -50px;
+      }
+      .lds-spinner div {
+        transform: scale(0.5);
+        transform-origin: 40px 40px;
+        animation: lds-spinner 1.2s linear infinite;
+
+      }
+      .lds-spinner div:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 3px;
+        left: 37px;
+        width: 6px;
+        height: 18px;
+        border-radius: 20%;
+        background: #fff;
+      }
+      .lds-spinner div:nth-child(1) {
+        transform: rotate(0deg) scale(0.5);
+        animation-delay: -1.1s;
+      }
+      .lds-spinner div:nth-child(2) {
+        transform: rotate(30deg) scale(0.5);
+        animation-delay: -1s;
+      }
+      .lds-spinner div:nth-child(3) {
+        transform: rotate(60deg) scale(0.5);
+        animation-delay: -0.9s;
+      }
+      .lds-spinner div:nth-child(4) {
+        transform: rotate(90deg) scale(0.5);
+        animation-delay: -0.8s;
+      }
+      .lds-spinner div:nth-child(5) {
+        transform: rotate(120deg) scale(0.5);
+        animation-delay: -0.7s;
+      }
+      .lds-spinner div:nth-child(6) {
+        transform: rotate(150deg) scale(0.5);
+        animation-delay: -0.6s;
+      }
+      .lds-spinner div:nth-child(7) {
+        transform: rotate(180deg) scale(0.5);
+        animation-delay: -0.5s;
+      }
+      .lds-spinner div:nth-child(8) {
+        transform: rotate(210deg) scale(0.5);
+        animation-delay: -0.4s;
+      }
+      .lds-spinner div:nth-child(9) {
+        transform: rotate(240deg) scale(0.5);
+        animation-delay: -0.3s;
+      }
+      .lds-spinner div:nth-child(10) {
+        transform: rotate(270deg) scale(0.5);
+        animation-delay: -0.2s;
+      }
+      .lds-spinner div:nth-child(11) {
+        transform: rotate(300deg) scale(0.5);
+        animation-delay: -0.1s;
+      }
+      .lds-spinner div:nth-child(12) {
+        transform: rotate(330deg) scale(0.5);
+        animation-delay: 0s;
+      }
+      @keyframes lds-spinner {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      .loading{display: none;}
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="one">
+        <img src="images/1.png" style="width: 100%;" />
+        <div style="height: 94px;"></div>
+        <div class="next_one"></div>
+        <div class="footer">
+          <img src="images/1_b.png" style="width: 100%;" />
+        </div>
+      </div>
+      <div id="two" class="next_contain">
+        <img src="images/3.png" style="width: 100%;" />
+        <div class="next_two"></div>
+      </div>
+      <div id="three" class="next_contain">
+        <img src="images/4_b.png" style="width: 100%;" />
+        <div class="next_three"></div>
+      </div>
+      <div id="four" class="next_contain">
+        <img src="images/5.png" style="width: 100%;" />
+      </div>
+      <!-- <div class="loader"> -->
+        <div class="loading" style="position: absolute;top: 0;left: 0;width: 750px;height: 100vh;">
+          <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>
+        <!-- </div> -->
+    </div> 
+  </body>
+  <script>
+    window.onload = function(){
+        $(".next_one").click(function(){
+            $("#two").css("display","block");
+            $("#two").animate({left:'0px'},'200');
+            $("html,body").animate({
+                scrollTop: 0
+            }, 500);
+            // $("#one").animate({left:'-100%'},"slow",function(){
+            //     $(this).css("display","none");
+            // });
+            $(document).attr("title","取单");
+            history.pushState({ page: 1 }, "取单", "#/page=1");
+        });
+
+        $(".next_two").click(function(){
+            $("#three").css("display","block");
+            $("#three").animate({left:'0px'},'200');
+            $(document).attr("title","报告单列表");
+            $(".next_three").hide();
+            setTimeout(function(){
+              $('.loading').show()
+            },200)
+            setTimeout(function(){
+              $('.loading').hide();
+              $(".next_three").show();
+              history.pushState({ page: 2 }, "报告单列表", "#/page=2");
+            },1500)
+            
+        });
+        
+        $(".next_three").click(function(){
+            $("#four").css("display","block");
+            $("#four").animate({left:'0px'},'200');
+            $(document).attr("title","检验报告单详情");
+            history.pushState({ page: 3 }, "检验报告单详情", "#/page=3");
+        });
+    }
+</script>
+
+
+<script>
+  function backToPageOne() {
+    $("#three").animate({ left: '750px' }, '200');
+    $("#two").animate({ left: '0px' }, '200');
+    $(document).attr("title", "取单");
+  }
+  function backToPageTwo() {
+    $("#four").animate({ left: '750px' }, '200');
+    $("#three").animate({ left: '0px' }, '200');
+    $(document).attr("title", "报告单列表");
+  }
+  function backToPageThree() {
+    $("#four").animate({ left: '0px' }, '200');
+    $(document).attr("title", "检验报告单详情");
+  }
+
+  window.onpopstate = function (event) {
+    let pageNo = window.location.hash.split('#')[1] && +window.location.hash.split('#')[1].split('=')[1];
+
+    switch (pageNo) {
+      case 1:
+        console.log('1 rendered!', pageNo);
+        backToPageOne();
+        break;
+      case 2:
+        console.log('2 rendered!', pageNo);
+        backToPageTwo();
+        break;
+      case 3:
+        console.log('3 rendered!', pageNo);
+        backToPageThree();
+        break;
+      default:
+        $("#two").animate({ left: '750px' }, '200');
+        $("#three").animate({ left: '750px' }, '200');
+        $("#four").animate({ left: '750px' }, '200');
+        $(document).attr("title", "上海市肺科医院");
+        console.log('default rendered!', pageNo || 0);
+    }
+
+  }
+
+  history.replaceState({ page: 0 }, "上海市肺科医院", "#/page=0");
+</script>
+</html>
